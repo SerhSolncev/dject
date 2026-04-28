@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="description" content />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 	<style>
       @font-face {
           font-family: 'Novelist Display';
@@ -19,15 +22,154 @@
 		      font-family: 'Novelist Display';
       }
 
+      button {
+		      border: none;
+          background-color: transparent;
+      }
+
       .projects-wrap {
 		      max-width: 1440px;
           margin: 0 auto;
+		      padding: 24px;
+		      position: relative;
+      }
+
+      .projects-wrap__list {
+          display: grid;
+		      grid-template-columns: repeat(3, 1fr);
+      }
+
+      .project-item {
+          display: flex;
+      }
+
+      .project-item:not(:last-child) {
+		      border-right: 1px solid #000;
+      }
+
+      .project-f {
+          width: 100%;
+          display: flex;
+		      flex-direction: column;
+		      align-items: flex-start;
+		      align-self: stretch;
+          padding: 24px;
+      }
+
+      .project-f__bottom {
+          margin: auto 0 0 auto;
+      }
+
+      .project-f__title {
+		      font: 300 42px/1.2 'Novelist Display';
+          color: #000000;
+          text-transform: uppercase;
+      }
+
+      .project-f__number {
+          font: 400 380px/1 'Novelist Display';
+          color: #000000;
+      }
+
+      .projects-wrap__duga {
+          width: 39px;
+          height: 42px;
+		      position: absolute;
+		      z-index: 1;
+      }
+
+      .projects-wrap__duga--lt {
+          left: 0;
+          top: 0;
+          background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAsCAYAAAD4rZFFAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAVRJREFUeAHtmdFNw0AQRCdAAemA7YB0gEugg7gD6ICUQAe4A0QFuANCBRwVkA5gR7ers1A+STyR8qTR2VKkjGZ375x4gXkxVxfrtWvlWk5EhiscF37xnes21uWez5TQLu63CxyeNLZGTW1qZqQJ11esBUeG5h5d366f0JvrHrW8s/LXHNcN9pd2FphSmvuMexlznMp3tOQeIAbTyp57glByhGY4CFnaDmIYqjEafIFYeoT9l8OxgSBTgz0EkTdoaD3YQxBDMyi3/yWcXtkhITyDc5uRxNA2aoMo2YcdRMnz+BmiGGqK0mUeUFNcQxRDGxZZBoinSLIXpbiYXPeo5R4hTD5lG0QxtN/FcmS5u1hfIUw+6awgjORUJyw30zPXB0ShSYvrEaJkkmQLUWjyJq4LRKHJ/PehQJTsyQJhMskdhDkZk/KcTf4XJ2Hy0sUXTiOEz+5fzhdYtKW1L2MAAAAASUVORK5CYII=);
+      }
+
+      .projects-wrap__duga--rb {
+          right: 0;
+          bottom: 0;
+          transform: rotate(180deg);
+          background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAsCAYAAAD4rZFFAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAVRJREFUeAHtmdFNw0AQRCdAAemA7YB0gEugg7gD6ICUQAe4A0QFuANCBRwVkA5gR7ers1A+STyR8qTR2VKkjGZ375x4gXkxVxfrtWvlWk5EhiscF37xnes21uWez5TQLu63CxyeNLZGTW1qZqQJ11esBUeG5h5d366f0JvrHrW8s/LXHNcN9pd2FphSmvuMexlznMp3tOQeIAbTyp57glByhGY4CFnaDmIYqjEafIFYeoT9l8OxgSBTgz0EkTdoaD3YQxBDMyi3/yWcXtkhITyDc5uRxNA2aoMo2YcdRMnz+BmiGGqK0mUeUFNcQxRDGxZZBoinSLIXpbiYXPeo5R4hTD5lG0QxtN/FcmS5u1hfIUw+6awgjORUJyw30zPXB0ShSYvrEaJkkmQLUWjyJq4LRKHJ/PehQJTsyQJhMskdhDkZk/KcTf4XJ2Hy0sUXTiOEz+5fzhdYtKW1L2MAAAAASUVORK5CYII=);
+      }
+
+      .arrow-btn {
+          font: 500 15px/1.2 'Inter';
+          color: #000000;
+          padding: 2px 4px;
+          text-transform: uppercase;
+		      border-radius: 15px;
+          background-color: #fff;
+      }
+
+      .arrow-btn svg {
+		      width: 25px;
+		      height: 8px;
       }
 	</style>
 </head>
 <body>
+<br><br><br><br><br><br>
 	<div class="projects-wrap">
-		<h1>PROJECTS</h1>
+		<div class="projects-wrap__duga projects-wrap__duga--lt"></div>
+		<div class="projects-wrap__duga projects-wrap__duga--rb"></div>
+		<!-- f-list -->
+		<div class="projects-wrap__list">
+			<!-- f-card -->
+			<div class="project-item">
+					<div class="project-f">
+						<div class="project-f__title">
+							Prime-time <br>
+							Entertaiment <br>
+							Formats
+						</div>
+						<div class="project-f__bottom">
+							<div class="project-f__number">1</div>
+							<button type="button" class="arrow-btn">
+								<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
+								</svg>
+								<span class="arrow-btn__text">SHOW MORE</span>
+							</button>
+						</div>
+					</div>
+			</div>
+
+			<!-- s-card -->
+			<div class="project-item">
+				<div class="project-f">
+					<div class="project-f__title">
+						digital projects
+					</div>
+					<div class="project-f__bottom">
+						<div class="project-f__number">2</div>
+						<button type="button" class="arrow-btn">
+							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
+							</svg>
+							<span class="arrow-btn__text">SHOW MORE</span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- th-card -->
+			<div class="project-item">
+				<div class="project-f">
+					<div class="project-f__title">
+						Royal arc (GDev) —
+						Creative R&D
+					</div>
+					<div class="project-f__bottom">
+						<div class="project-f__number">3</div>
+						<button type="button" class="arrow-btn">
+							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
+							</svg>
+							<span class="arrow-btn__text">SHOW MORE</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
