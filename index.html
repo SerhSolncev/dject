@@ -44,6 +44,8 @@
           display: grid;
           grid-template-columns: 32.25fr 35.19fr 32.56fr;
           padding: 32px 5.5% 26px 0;
+          display: block;
+          padding: 0;
       }
 
       .project-item {
@@ -62,6 +64,7 @@
 		      align-self: stretch;
           padding: 0 8px 33px 28px;
 		      position: relative;
+          display: none;
       }
 
       .project-f__pic {
@@ -213,6 +216,29 @@
           color: #f77b5f;
       }
 
+      .first-hidden {
+          width: 100%;
+          display: flex;
+		      align-items: flex-start;
+		      gap: 40px;
+      }
+
+      .first-hidden__pic {
+          z-index: 1;
+          aspect-ratio: 392/698;
+          transition: opacity 0.15s ease-in;
+          cursor: pointer;
+		      align-self: stretch;
+          margin-left: auto;
+		      flex-shrink: 0;
+      }
+
+      .first-hidden__pic img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 16px;
+      }
 	</style>
 </head>
 <body>
@@ -242,16 +268,24 @@
 						</div>
 						<div class="project-f__bottom">
 							<div class="project-f__number">1</div>
-							<button type="button" class="arrow-btn">
+							<button type="button" class="arrow-btn js-show-hidden" data-id="first-hidden">
 								<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
 								</svg>
 								<span class="arrow-btn__text">SHOW MORE</span>
 							</button>
 						</div>
-						<div class="project-f__pic">
+						<div class="project-f__pic js-show-hidden" data-id="first-hidden">
 							<img src="card1.jpg" alt="" width="417" height="658">
 						</div>
+					</div>
+					<div class="first-hidden js-hidden-block" data-id="first-hidden">
+							<div class="first-hidden__left">
+
+							</div>
+							<div class="first-hidden__pic js-show-hidden" data-id="first-hidden">
+								<img src="card1-opened.jpg" alt="" width="392" height="698">
+							</div>
 					</div>
 			</div>
 
