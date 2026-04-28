@@ -156,6 +156,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="milenial">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="quizz">
         <serverdata>
           <mappings>
@@ -178,6 +185,13 @@
         </serverdata>
       </paths>
       <paths name="visa2">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="vsenov">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
