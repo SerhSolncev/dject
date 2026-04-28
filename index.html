@@ -9,17 +9,22 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 	<style>
       @font-face {
-          font-family: 'Novelist Display';
-          font-style: normal;
+          font-family: 'Novelist';
+          src: url('Novelist-Display.woff2') format('woff2'),
+          url('Novelist-Display.woff') format('woff');
           font-weight: normal;
-          src: local('Novelist Display'), url('Novelist_free.woff') format('woff');
+          font-style: normal;
+          font-display: swap;
       }
 
       body {
+		      font-family: 'Novelist';
+      }
+
+      * {
           margin: 0;
           padding: 0;
-		      box-sizing: border-box;
-		      font-family: 'Novelist Display';
+          box-sizing: border-box;
       }
 
       button {
@@ -36,7 +41,8 @@
 
       .projects-wrap__list {
           display: grid;
-		      grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: 32.25fr 35.19fr 32.56fr;
+          padding: 0 5.5% 0 0;
       }
 
       .project-item {
@@ -53,22 +59,39 @@
 		      flex-direction: column;
 		      align-items: flex-start;
 		      align-self: stretch;
-          padding: 24px;
+          padding: 32px 13px 33px 28px;
+      }
+
+      .project-f--sec {
+          padding: 32px 36px 33px 28px;
+      }
+
+      .project-f--th {
+          padding: 32px 36px 33px 28px;
       }
 
       .project-f__bottom {
           margin: auto 0 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .project-f__bottom .arrow-btn {
+          transform: translateX(-20px);
       }
 
       .project-f__title {
-		      font: 300 42px/1.2 'Novelist Display';
+		      font: 300 42px/1.15 'Novelist';
           color: #000000;
           text-transform: uppercase;
+          margin: 0 0 103px;
       }
 
       .project-f__number {
-          font: 400 380px/1 'Novelist Display';
+          font: 400 380px/1 'Novelist';
           color: #000000;
+          margin: 0 0 -24px;
       }
 
       .projects-wrap__duga {
@@ -91,7 +114,46 @@
           background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAsCAYAAAD4rZFFAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAVRJREFUeAHtmdFNw0AQRCdAAemA7YB0gEugg7gD6ICUQAe4A0QFuANCBRwVkA5gR7ers1A+STyR8qTR2VKkjGZ375x4gXkxVxfrtWvlWk5EhiscF37xnes21uWez5TQLu63CxyeNLZGTW1qZqQJ11esBUeG5h5d366f0JvrHrW8s/LXHNcN9pd2FphSmvuMexlznMp3tOQeIAbTyp57glByhGY4CFnaDmIYqjEafIFYeoT9l8OxgSBTgz0EkTdoaD3YQxBDMyi3/yWcXtkhITyDc5uRxNA2aoMo2YcdRMnz+BmiGGqK0mUeUFNcQxRDGxZZBoinSLIXpbiYXPeo5R4hTD5lG0QxtN/FcmS5u1hfIUw+6awgjORUJyw30zPXB0ShSYvrEaJkkmQLUWjyJq4LRKHJ/PehQJTsyQJhMskdhDkZk/KcTf4XJ2Hy0sUXTiOEz+5fzhdYtKW1L2MAAAAASUVORK5CYII=);
       }
 
+      .projects-wrap__arrow {
+		      position: absolute;
+          height: 2px;
+          background-color: #f77b5f;
+      }
+
+      .projects-wrap__arrow svg {
+          display: block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 1;
+          width: 13px;
+          height: 15px;
+      }
+
+      .projects-wrap__arrow--top {
+          top: 0;
+          left: 64px;
+          width: calc(100% - 129px);
+      }
+
+      .projects-wrap__arrow--top svg {
+          right: -4px;
+      }
+
+      .projects-wrap__arrow--bottom {
+          bottom: 0;
+          right: 64px;
+          width: calc(100% - 138px);
+      }
+
+      .projects-wrap__arrow--bottom svg {
+          left: -4px;
+      }
+
       .arrow-btn {
+          display: flex;
+          align-items: center;
+		      gap: 5px;
           font: 500 15px/1.2 'Inter';
           color: #000000;
           padding: 2px 4px;
@@ -111,6 +173,16 @@
 	<div class="projects-wrap">
 		<div class="projects-wrap__duga projects-wrap__duga--lt"></div>
 		<div class="projects-wrap__duga projects-wrap__duga--rb"></div>
+		<div class="projects-wrap__arrow projects-wrap__arrow--top">
+			<svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M12.2627 8.07107C12.6533 7.68054 12.6533 7.04738 12.2627 6.65685L5.89877 0.292891C5.50824 -0.0976339 4.87508 -0.0976339 4.48455 0.292891C4.09403 0.683415 4.09403 1.31658 4.48455 1.7071L10.1414 7.36396L4.48455 13.0208C4.09403 13.4113 4.09403 14.0445 4.48455 14.435C4.87508 14.8256 5.50824 14.8256 5.89877 14.435L12.2627 8.07107ZM-8.15972e-06 7.36396L-8.20635e-06 8.36396L11.5556 8.36396L11.5556 7.36396L11.5556 6.36396L-8.1131e-06 6.36396L-8.15972e-06 7.36396Z" fill="#F77B5F"/>
+			</svg>
+		</div>
+		<div class="projects-wrap__arrow projects-wrap__arrow--bottom">
+			<svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0.29196 8.07107C-0.0985643 7.68054 -0.0985642 7.04738 0.291961 6.65685L6.65592 0.292891C7.04645 -0.0976339 7.67961 -0.0976339 8.07013 0.292891C8.46066 0.683415 8.46066 1.31658 8.07013 1.7071L2.41328 7.36396L8.07014 13.0208C8.46066 13.4113 8.46066 14.0445 8.07014 14.435C7.67961 14.8256 7.04645 14.8256 6.65592 14.435L0.29196 8.07107ZM12.5547 7.36396L12.5547 8.36396L0.999067 8.36396L0.999067 7.36396L0.999067 6.36396L12.5547 6.36396L12.5547 7.36396Z" fill="#F77B5F"/>
+			</svg>
+		</div>
 		<!-- f-list -->
 		<div class="projects-wrap__list">
 			<!-- f-card -->
@@ -135,7 +207,7 @@
 
 			<!-- s-card -->
 			<div class="project-item">
-				<div class="project-f">
+				<div class="project-f project-f--sec">
 					<div class="project-f__title">
 						digital projects
 					</div>
