@@ -305,7 +305,8 @@
           flex-shrink: 0;
           position: relative;
           max-width: 392px;
-          margin: -4px 0 -13px auto;
+		      min-height: 698px;
+          margin: -4px 0 0 auto;
       }
 
       .first-hidden__pic--simple {
@@ -341,13 +342,8 @@
 		      align-self: stretch;
       }
 
-
       .first-hidden__left .mini-card--sec {
           margin: 0 0 17px;
-      }
-
-      .first-hidden__left--sec .mini-card--sec {
-          margin: 0 0 56px;
       }
 
       .mini-card {
@@ -412,6 +408,10 @@
 		      position: relative;
       }
 
+      .accordion-custom:nth-child(n + 2) .first-hidden--sec .mini-card--sec {
+          margin: 0 0 56px;
+      }
+
       .accordion-custom:nth-child(1) {
           z-index: 4;
       }
@@ -439,7 +439,7 @@
 		      justify-content: center;
 		      align-items: center;
 		      aspect-ratio: 623/228;
-          margin: -19px 0 -44px;
+          margin: -19px 0 -24px;
       }
 
       .accordion-custom__pic img {
@@ -455,12 +455,12 @@
       .accordion-custom__hidden-inner {
           border: 1px solid #000;
           border-radius: 15px;
-          padding: 52px 30px;
+          padding: 32.25px 30px;
           background-color: #fff;
       }
 
       .accordion-custom--sec .accordion-custom__hidden-inner {
-          padding: 30px 37px 51px;
+          padding: 43px 37px 44px;
       }
 
       .accordion-custom--sec .first-hidden__sub {
@@ -469,7 +469,7 @@
 
 
       .accordion-custom--th .accordion-custom__hidden-inner {
-          padding: 43px 28px 40px;
+          padding: 68px 28px 69px;
       }
 
       .accordion-custom--th .first-hidden__sub {
@@ -515,7 +515,7 @@
       .accordion-custom__texts {
           display: flex;
           flex-direction: column;
-          gap: 35px;
+          gap: 19px;
       }
 
       .acc-btn__icon {
@@ -965,7 +965,7 @@
 								<div class="accordion-custom__hidden-inner">
 									<a href="#!" class="mini-card mini-card--sec">
 										<div class="mini-card__pic">
-											<img src="mini-card7.jpg" alt="" width="270" height="82">
+											<img src="mini-card4.jpg" alt="" width="270" height="82">
 										</div>
 										<div class="mini-card__body">
 											<div class="mini-card__title">koshernye pilotki</div>
@@ -1269,9 +1269,9 @@
 		  if (parentItem.classList.contains('active')) {
 			  accBlock.style.maxHeight = accBlock.scrollHeight + "px";
 		  }
-		  setTimeout(() => {
-			  accBlock.style.transition = 'max-height 0.2s linear, margin 0.2s linear';
-		  }, 10);
+		  // setTimeout(() => {
+			//   accBlock.style.transition = 'max-height 0.2s linear, margin 0.2s linear';
+		  // }, 10);
 
 		  let previousHeight = accBlock.scrollHeight;
 		  setInterval(() => {
