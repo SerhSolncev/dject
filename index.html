@@ -48,8 +48,6 @@
           display: grid;
           grid-template-columns: 32.25fr 35.19fr 32.56fr;
           padding: 32px 5.5% 26px 0;
-          display: block;
-          padding: 0;
       }
 
       .project-item {
@@ -68,7 +66,6 @@
 		      align-self: stretch;
           padding: 0 8px 33px 28px;
 		      position: relative;
-          display: none;
       }
 
       .project-f__pic {
@@ -222,10 +219,14 @@
 
       .first-hidden {
           width: 100%;
-          display: flex;
 		      align-items: flex-start;
 		      gap: 40px;
           padding: 11px 53px 14px 27px;
+          display: none;
+      }
+
+      .first-hidden.show {
+          display: flex;
       }
 
       .first-hidden__title {
@@ -487,4 +488,33 @@
 		</div>
 	</div>
 </body>
+<script>
+	document.addEventListener('click', (e) => {
+		const showBtn = e.target.closest('.js-show-hidden');
+		const hideBtn = e.target.closest('.js-hide-hidden');
+
+		if (showBtn) {
+			const id = showBtn.dataset.id;
+
+			document.querySelectorAll('.js-hidden-block').forEach(block => {
+				block.classList.toggle('show', block.dataset.id === id);
+			});
+		}
+
+		if (hideBtn) {
+			const id = hideBtn.dataset.id;
+
+			document.querySelectorAll('.js-hidden-block').forEach(block => {
+				if (block.dataset.id === id) {
+					block.classList.remove('show');
+				}
+			});
+		}
+
+		document.querySelectorAll('.js-wrap-list').forEach(wrap => {
+			const hasOpened = wrap.querySelector('.js-hidden-block.show') !== null;
+			wrap.classList.toggle('has-opened', hasOpened);
+		});
+	});
+</script>
 </html>
