@@ -38,6 +38,7 @@
       }
 
       .projects-wrap {
+          width: calc(100% - 32px);
 		      max-width: 1440px;
           margin: 0 auto;
 		      padding: 24px;
@@ -267,7 +268,7 @@
       }
 
       .first-hidden__sub {
-          font: 400 30px/1 'Novelist';
+          font: 400 30px/1.2 'Novelist';
           color: #000000;
           text-transform: uppercase;
           letter-spacing: 0.005em;
@@ -627,6 +628,74 @@
           padding: 4px 8px;
           border-radius: 8px;
       }
+
+      @media(max-width: 1199px) {
+
+          .project-item:not(:last-child) {
+              border-right: none;
+          }
+
+		      .project-item {
+              padding: 24px 0;
+				      border-top: 1px solid #f77b5f;
+		      }
+
+          .project-item:first-child {
+              padding-top: 0;
+		          border-top: none;
+          }
+
+          .projects-wrap {
+		          max-width: 480px;
+              padding: 16px;
+          }
+
+		      .projects-wrap__list {
+				      grid-template-columns: 1fr;
+		      }
+
+          .project-f {
+              padding: 8px;
+          }
+
+          .projects-wrap__list {
+              padding: 0;
+          }
+
+          .projects-wrap__arrow--top {
+              width: calc(100% - 72px);
+          }
+
+          .projects-wrap__arrow--bottom {
+              width: calc(100% - 75px);
+          }
+
+          .project-f__title {
+		          font-size: 36px;
+              width: 100%;
+              padding: 0 20px 0 0;
+              margin: 0;
+          }
+
+          .project-f__number {
+		          font-size: 36px;
+              position: absolute;
+              top: 11px;
+              right: 0;
+              color: #f77b5f;
+		          text-shadow: 0 0 0 #f77b5f, 0 0 0 #f77b5f, 0 0 0 #f77b5f, 0 0 0 #f77b5f;
+          }
+
+          .project-f__bottom {
+		          align-items: flex-end;
+		          position: initial;
+              margin: 13px 0 0 -5px;
+          }
+
+          .project-f .arrow-btn {
+		          transform: none;
+          }
+      }
 	</style>
 </head>
 <body>
@@ -645,7 +714,7 @@
 			</svg>
 		</div>
 		<!-- f-list -->
-		<div class="projects-wrap__list js-wrap-list has-opened">
+		<div class="projects-wrap__list js-wrap-list">
 			<!-- f-card -->
 			<div class="project-item">
 					<div class="project-f">
@@ -928,7 +997,7 @@
 						<img src="card3.jpg" alt="" width="417" height="658">
 					</div>
 				</div>
-				<div class="first-hidden first-hidden--sec js-hidden-block show" data-id="third-hidden">
+				<div class="first-hidden first-hidden--sec js-hidden-block" data-id="third-hidden">
 					<div class="first-hidden__left first-hidden__left--sec">
 							<div class="big-title">
 								<span class="big-title__title">Royal arc (GDev) —</span>
@@ -989,6 +1058,7 @@
 			</div>
 		</div>
 	</div>
+<br><br><br><br><br><br>
 </body>
 <script>
 	document.addEventListener('click', (e) => {
