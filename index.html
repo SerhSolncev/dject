@@ -433,6 +433,7 @@
           background-color: #f77b5f;
           padding: 20px 24px;
 		      border-radius: 15px;
+		      cursor: pointer;
       }
 
       .accordion-custom.active .acc-btn {
@@ -457,6 +458,11 @@
       .acc-btn__text {
           font: 500 44px/1 'Novelist';
           color: #000;
+		      transition: color 0.15s ease-in;
+      }
+
+      .acc-btn:hover .acc-btn__text {
+          color: #ffffff;
       }
 	</style>
 </head>
