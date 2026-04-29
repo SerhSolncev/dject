@@ -308,7 +308,7 @@
           flex-shrink: 0;
           position: relative;
           max-width: 392px;
-          margin: -4px 0 0 auto;
+          margin: -4px 0 -13px auto;
       }
 
       .first-hidden__pic--simple {
@@ -462,7 +462,7 @@
       }
 
       .accordion-custom--sec .accordion-custom__hidden-inner {
-          padding: 30px 37px 40px;
+          padding: 30px 37px 51px;
       }
 
       .accordion-custom--sec .first-hidden__sub {
@@ -475,7 +475,7 @@
       }
 
       .accordion-custom--th .first-hidden__sub {
-          margin: 0 0 22px;
+          margin: 0 0 36px;
 		      font-size: 38px;
       }
 
@@ -494,7 +494,7 @@
 		      justify-content: space-between;
 		      gap: 20px;
           background-color: #f77b5f;
-          padding: 18px 24px;
+          padding: 18px 24px 31px;
 		      border-radius: 15px 15px 0 0;
 		      cursor: pointer;
           border: 1px solid #000;
@@ -517,7 +517,7 @@
       .accordion-custom__texts {
           display: flex;
           flex-direction: column;
-          gap: 13px;
+          gap: 35px;
       }
 
       .acc-btn__icon {
@@ -711,7 +711,7 @@
 				</div>
 				<div class="first-hidden first-hidden--sec js-hidden-block show" data-id="second-hidden">
 					<div class="first-hidden__left first-hidden__left--sec js-acc-wrap">
-						<div class="accordion-custom js-acc">
+						<div class="accordion-custom js-acc active" data-image="card2-opened.jpg">
 							<div class="acc-btn js-open-acc">
 								<div class="acc-btn__text">koshernye pilotki</div>
 								<div class="acc-btn__icon">
@@ -741,7 +741,7 @@
 							</div>
 						</div>
 
-						<div class="accordion-custom accordion-custom--sec js-acc">
+						<div class="accordion-custom accordion-custom--sec js-acc" data-image="card3-opened.jpg">
 							<div class="acc-btn js-open-acc">
 								<div class="acc-btn__text">stereotype show</div>
 								<div class="acc-btn__icon">
@@ -794,7 +794,7 @@
 						</div>
 
 
-						<div class="accordion-custom accordion-custom--th js-acc active">
+						<div class="accordion-custom accordion-custom--th js-acc" data-image="card4-opened.jpg">
 							<div class="acc-btn js-open-acc">
 								<div class="acc-btn__text">Human Rights Defender <br> in Law (RUTUBE)</div>
 								<div class="acc-btn__icon">
@@ -848,7 +848,7 @@
 						</div>
 					</div>
 					<div class="first-hidden__pic first-hidden__pic--simple">
-						<img src="card2-opened.jpg" alt="" width="392" height="698">
+						<img src="card2-opened.jpg" class="js-change-img" alt="" width="392" height="698">
 						<button type="button" class="arrow-btn js-hide-hidden" data-id="first-hidden">
 							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
@@ -915,10 +915,20 @@
   // acc
   const accs = document.querySelectorAll('.js-acc-wrap');
 
+  function updateAccImage(accWrap) {
+	  const activeAcc = accWrap.querySelector('.js-acc.active');
+	  const imgBlock = document.querySelector('.js-change-img');
+
+	  if (!imgBlock) return;
+
+	  if (activeAcc) {
+		  const image = activeAcc.dataset.image;
+		  if (image) imgBlock.src = image;
+	  }
+  }
   function handleAccordion(parent) {
 	  const buttons = parent.querySelectorAll('.js-open-acc');
 	  const parentItems = parent.querySelectorAll('.js-acc');
-
 
 	  parentItems.forEach((parentItem) => {
 		  const accBlock = parentItem.querySelector('.js-acc-block');
@@ -956,8 +966,8 @@
 			  if (button.closest('.js-acc').classList.contains('active')) {
 				  contentsItem.style.maxHeight = '0';
 				  button.closest('.js-acc').classList.remove('active');
-
-				  if(button.closest('.js-state-inputs')) {
+		      updateAccImage(button.closest('.js-acc-wrap'));
+		    if(button.closest('.js-state-inputs')) {
 					  contentsItem.querySelectorAll('.input-item__input').forEach((input) => {
 						  input.disabled = true;
 					  })
@@ -982,6 +992,7 @@
 
 				  contentsItem.style.maxHeight = contentsItem.scrollHeight + "px";
 				  button.closest('.js-acc').classList.add('active');
+		      updateAccImage(button.closest('.js-acc-wrap'));
 			  }
 
 			  parentWrap.style.maxHeight = 'initial';
