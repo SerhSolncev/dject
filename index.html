@@ -347,6 +347,10 @@
           margin: 0 0 17px;
       }
 
+      .first-hidden__left--sec .mini-card--sec {
+          margin: 0 0 56px;
+      }
+
       .mini-card {
           display: flex;
           align-items: center;
@@ -449,6 +453,10 @@
           padding: 30px 37px;
       }
 
+      .accordion-custom--sec .first-hidden__sub {
+          margin: 0 0 22px;
+      }
+
       .acc-btn {
           display: flex;
           align-items: center;
@@ -463,6 +471,12 @@
 
       .accordion-custom.active .acc-btn {
           display: none;
+      }
+
+      .accordion-custom__texts {
+          display: flex;
+          flex-direction: column;
+          gap: 13px;
       }
 
       .acc-btn__icon {
@@ -488,6 +502,30 @@
 
       .acc-btn:hover .acc-btn__text {
           color: #ffffff;
+      }
+
+      .text-block {
+          display: flex;
+		      align-items: flex-start;
+          gap: 15px;
+
+		      svg {
+				      flex-shrink: 0;
+              transform: translateY(13px);
+		      }
+      }
+
+      .text-block--sec {
+          align-items: center;
+
+          svg {
+              flex-shrink: 0;
+              transform: none;
+          }
+      }
+
+      .text-block__item {
+		      font: 400 34px/1.15 'Novelist';
       }
 	</style>
 </head>
@@ -675,27 +713,29 @@
 									<div class="first-hidden__sub first-hidden__sub--th">
 										<span>Role:</span> CREATOR-LED FORMAT DEVELOPMENT
 									</div>
-									<div class="text-block">
-										<div class="text-block__item">DEVELOPED</div>
-										<svg width="129" height="7" viewBox="0 0 129 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M124.773 0.120808C124.933 -0.039976 125.194 -0.0401581 125.355 0.120493L127.977 2.74202C128.137 2.9029 128.137 3.16371 127.976 3.32445L125.356 5.9456C125.195 6.10645 124.933 6.10596 124.772 5.94511C124.612 5.78423 124.612 5.52342 124.773 5.36268L126.691 3.44485L0.00092343 3.44457L0.00161567 2.62081L126.691 2.62188L124.773 0.703239C124.612 0.542484 124.612 0.281682 124.773 0.120808Z" fill="black"/>
-										</svg>
-										<div class="text-block__item text-block__item--sec">
-											<span>format structure</span>
-											<span>concept</span>
-											<span>visual LANGUAGE</span>
+									<div class="accordion-custom__texts">
+										<div class="text-block">
+											<div class="text-block__item">DEVELOPED</div>
+											<svg width="129" height="7" viewBox="0 0 129 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M124.773 0.120808C124.933 -0.039976 125.194 -0.0401581 125.355 0.120493L127.977 2.74202C128.137 2.9029 128.137 3.16371 127.976 3.32445L125.356 5.9456C125.195 6.10645 124.933 6.10596 124.772 5.94511C124.612 5.78423 124.612 5.52342 124.773 5.36268L126.691 3.44485L0.00092343 3.44457L0.00161567 2.62081L126.691 2.62188L124.773 0.703239C124.612 0.542484 124.612 0.281682 124.773 0.120808Z" fill="black"/>
+											</svg>
+											<div class="text-block__item text-block__item--sec">
+												<span>format structure</span>
+												<span>concept</span>
+												<span>visual LANGUAGE</span>
+											</div>
 										</div>
-									</div>
-									<div class="text-block text-block--sec">
-										<div class="text-block__item">
-											PRODUCTION SYSTEM RESULT
-										</div>
-										<svg width="230" height="7" viewBox="0 0 230 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M226.094 0.120782C226.255 -0.0400247 226.516 -0.04025 226.677 0.120467L229.298 2.742C229.459 2.90285 229.459 3.16358 229.298 3.32443L226.676 5.94558C226.516 6.10621 226.255 6.10586 226.094 5.94509C225.933 5.78421 225.934 5.52341 226.095 5.36266L228.012 3.44482L0.411587 3.44502L-0.000297595 3.44548L-0.000409814 2.62171L0.411475 2.62125L228.012 2.62186L226.094 0.703212C225.934 0.542432 225.933 0.28165 226.094 0.120782Z" fill="black"/>
-										</svg>
-										<div class="text-block__item">
-											<span>~90K</span>
-											~90K views top episodes <span>25-</span>person team SOCIAL-FIRST FORMAT
+										<div class="text-block text-block--sec">
+											<div class="text-block__item">
+												PRODUCTION SYSTEM RESULT
+											</div>
+											<svg width="230" height="7" viewBox="0 0 230 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M226.094 0.120782C226.255 -0.0400247 226.516 -0.04025 226.677 0.120467L229.298 2.742C229.459 2.90285 229.459 3.16358 229.298 3.32443L226.676 5.94558C226.516 6.10621 226.255 6.10586 226.094 5.94509C225.933 5.78421 225.934 5.52341 226.095 5.36266L228.012 3.44482L0.411587 3.44502L-0.000297595 3.44548L-0.000409814 2.62171L0.411475 2.62125L228.012 2.62186L226.094 0.703212C225.934 0.542432 225.933 0.28165 226.094 0.120782Z" fill="black"/>
+											</svg>
+											<div class="text-block__item">
+												<span>~90K</span>
+												~90K views top episodes <span>25-</span>person team SOCIAL-FIRST FORMAT
+											</div>
 										</div>
 									</div>
 								</div>
