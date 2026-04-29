@@ -416,6 +416,11 @@
       .accordion-custom__pic img {
 
       }
+
+      .accordion-custom__hidden {
+		      max-height: 0;
+		      overflow: hidden;
+      }
 	</style>
 </head>
 <body>
@@ -548,23 +553,50 @@
 					</div>
 				</div>
 				<div class="first-hidden first-hidden--sec js-hidden-block show" data-id="second-hidden">
-					<div class="first-hidden__left first-hidden__left--sec">
-						<div class="accordion-custom">
-							<div class="accordion-custom__btn"></div>
-							<a href="#!" class="mini-card mini-card--sec">
-								<div class="mini-card__pic">
-									<img src="mini-card6.jpg" alt="" width="270" height="82">
+					<div class="first-hidden__left first-hidden__left--sec js-acc-wrap">
+						<div class="accordion-custom js-acc active">
+							<div class="acc-btn js-open-acc"></div>
+							<div class="accordion-custom__hidden js-acc-block">
+								<a href="#!" class="mini-card mini-card--sec">
+									<div class="mini-card__pic">
+										<img src="mini-card6.jpg" alt="" width="270" height="82">
+									</div>
+									<div class="mini-card__body">
+										<div class="mini-card__title">koshernye pilotki</div>
+										<div class="mini-card__text">Author-led YouTube show combining psychology and creative practice.</div>
+									</div>
+								</a>
+								<div class="first-hidden__sub first-hidden__sub--sec">
+									<span>Role:</span> Creator / Host / Producer
 								</div>
-								<div class="mini-card__body">
-									<div class="mini-card__title">koshernye pilotki</div>
-									<div class="mini-card__text">Author-led YouTube show combining psychology and creative practice.</div>
+								<div class="accordion-custom__pic">
+									<img src="tab1pic.svg" alt="" width="623" height="228">
 								</div>
-							</a>
-							<div class="first-hidden__sub first-hidden__sub--sec">
-								<span>Role:</span> Creator / Host / Producer
 							</div>
-							<div class="accordion-custom__pic">
-								<img src="tab1pic.svg" alt="" width="623" height="228">
+						</div>
+
+						<div class="accordion-custom js-acc">
+							<div class="acc-btn js-open-acc">
+								<div class="acc-btn__text">stereotype show</div>
+								<div class="acc-btn__btn">
+									<svg width="61" height="11" viewBox="0 0 61 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0.699219 4.45479C0.312619 4.45479 -0.000781238 4.76819 -0.000781238 5.15479C-0.000781238 5.54138 0.312619 5.85479 0.699219 5.85479V5.15479V4.45479ZM60.6942 5.64976C60.9676 5.37639 60.9676 4.93318 60.6942 4.65981L56.2394 0.205038C55.9661 -0.0683293 55.5228 -0.0683293 55.2495 0.205038C54.9761 0.478405 54.9761 0.92162 55.2495 1.19499L59.2093 5.15479L55.2495 9.11458C54.9761 9.38795 54.9761 9.83117 55.2495 10.1045C55.5228 10.3779 55.9661 10.3779 56.2394 10.1045L60.6942 5.64976ZM0.699219 5.15479V5.85479H60.1992V5.15479V4.45479H0.699219V5.15479Z" fill="black"/>
+									</svg>
+								</div>
+							</div>
+							<div class="accordion-custom__hidden js-acc-block">
+								<a href="#!" class="mini-card mini-card--sec">
+									<div class="mini-card__pic">
+										<img src="mini-card6.jpg" alt="" width="270" height="82">
+									</div>
+									<div class="mini-card__body">
+										<div class="mini-card__title">koshernye pilotki</div>
+										<div class="mini-card__text">Author-led YouTube show combining psychology and creative practice.</div>
+									</div>
+								</a>
+								<div class="first-hidden__sub first-hidden__sub--sec">
+									<span>Role:</span> Creator / Host / Producer
+								</div>
 							</div>
 						</div>
 					</div>
@@ -632,5 +664,114 @@
 			wrap.classList.toggle('has-opened', hasOpened);
 		});
 	});
+
+  // acc
+  const accs = document.querySelectorAll('.js-acc-wrap');
+
+  function handleAccordion(parent) {
+	  const buttons = parent.querySelectorAll('.js-open-acc');
+	  const parentItems = parent.querySelectorAll('.js-acc');
+
+
+	  parentItems.forEach((parentItem) => {
+		  const accBlock = parentItem.querySelector('.js-acc-block');
+		  accBlock.style.transition = 'none';
+		  if (parentItem.classList.contains('active')) {
+			  accBlock.style.maxHeight = accBlock.scrollHeight + "px";
+		  }
+		  setTimeout(() => {
+			  accBlock.style.transition = 'max-height 0.2s linear, margin 0.2s linear';
+		  }, 10);
+
+		  let previousHeight = accBlock.scrollHeight;
+		  setInterval(() => {
+			  if (parentItem.classList.contains('active')) {
+				  const currentHeight = accBlock.scrollHeight;
+				  if (currentHeight !== previousHeight) {
+					  accBlock.style.maxHeight = currentHeight + "px";
+					  previousHeight = currentHeight;
+				  }
+			  }
+		  }, 100);
+	  });
+
+	  buttons.forEach((button) => {
+		  button.addEventListener('click', (event) => {
+			  if (event.target.closest('.js-tooltip')) {
+				  return;
+			  }
+
+			  const contents = button.closest('.js-acc-wrap').querySelectorAll('.js-acc-block');
+			  const contentsItem = button.closest('.js-acc').querySelector('.js-acc-block');
+			  const parentWrap = button.closest('.js-acc-wrap');
+			  const isMultiple = parentWrap.hasAttribute('data-multiple');
+
+			  if (button.closest('.js-acc').classList.contains('active')) {
+				  contentsItem.style.maxHeight = '0';
+				  button.closest('.js-acc').classList.remove('active');
+
+				  if(button.closest('.js-state-inputs')) {
+					  contentsItem.querySelectorAll('.input-item__input').forEach((input) => {
+						  input.disabled = true;
+					  })
+				  }
+			  }
+			  else {
+				  if (!isMultiple) {
+					  contents.forEach((block) => {
+						  block.style.maxHeight = '0';
+					  });
+
+					  button.closest('.js-acc-wrap').querySelectorAll('.js-acc').forEach((parentItem) => {
+						  parentItem.classList.remove('active');
+					  });
+				  }
+
+				  if(button.closest('.js-state-inputs')) {
+					  contentsItem.querySelectorAll('.input-item__input').forEach((input) => {
+						  input.disabled = false;
+					  })
+				  }
+
+				  contentsItem.style.maxHeight = contentsItem.scrollHeight + "px";
+				  button.closest('.js-acc').classList.add('active');
+			  }
+
+			  parentWrap.style.maxHeight = 'initial';
+		  });
+
+		  const nestedAccordions = button.closest('.js-acc').querySelectorAll('.js-acc-wrap');
+		  nestedAccordions.forEach((nestedAccordion) => {
+			  handleAccordion(nestedAccordion);
+		  });
+	  });
+  }
+
+  if (accs.length > 0) {
+	  accs.forEach((parent) => {
+		  handleAccordion(parent);
+	  });
+  }
+
+  const observerAcc = new MutationObserver((mutationsList) => {
+	  mutationsList.forEach((mutation) => {
+		  mutation.addedNodes.forEach((node) => {
+			  if (!(node instanceof Element)) return;
+
+			  if (node.classList.contains('js-acc-wrap')) {
+				  handleAccordion(node);
+			  }
+
+			  node.querySelectorAll('.js-acc-wrap').forEach((nestedNode) => {
+				  handleAccordion(nestedNode);
+			  });
+		  });
+	  });
+  });
+
+  observerAcc.observe(document.body, {
+	  childList: true,
+	  subtree: true,
+  });
 </script>
 </html>
