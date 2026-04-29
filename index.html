@@ -68,11 +68,6 @@
 				border-color: transparent;
       }
 
-
-      .has-opened .project-item {
-          border: none;
-      }
-
       .project-f {
           width: 100%;
           display: flex;
@@ -81,10 +76,6 @@
 		      align-self: stretch;
           padding: 0 8px 33px 28px;
 		      position: relative;
-      }
-
-      .has-opened .project-f {
-          display: none;
       }
 
       .project-f__pic {
@@ -235,6 +226,7 @@
 		      cursor: pointer;
 		      transition: color 0.15s ease-in;
       }
+
       .arrow-btn svg {
 		      width: 25px;
 		      height: 8px;
@@ -242,6 +234,10 @@
 
       .arrow-btn:hover {
           color: #f77b5f;
+      }
+
+      .arrow-btn.opened svg {
+		      transform: scaleX(-1);
       }
 
       .first-hidden {
@@ -636,6 +632,7 @@
           }
 
 		      .project-item {
+				      flex-direction: column;
               padding: 24px 0;
 				      border-top: 1px solid #f77b5f;
 		      }
@@ -643,6 +640,10 @@
           .project-item:first-child {
               padding-top: 0;
 		          border-top: none;
+          }
+
+          .project-f__pic {
+              display: none;
           }
 
           .projects-wrap {
@@ -695,6 +696,49 @@
           .project-f .arrow-btn {
 		          transform: none;
           }
+
+          .first-hidden__pic {
+              display: none;
+          }
+
+          .mini-card {
+		          flex-direction: column;
+		          align-items: flex-start;
+		          border-bottom: 1px solid #dc4c2b;
+              padding-bottom: 18px;
+          }
+
+          .mini-card:last-child {
+              padding-bottom: 0;
+		          border: none;
+          }
+
+          .first-hidden__text {
+              padding: 5px 0 0;
+          }
+
+          .first-hidden {
+              padding: 10px 0;
+          }
+
+          .first-hidden__left .arrow-btn {
+              margin: 24px 0 0;
+          }
+      }
+
+      @media(min-width: 1200px) {
+
+          .has-opened .project-f {
+              display: none;
+          }
+
+          .has-opened .project-item {
+              border: none;
+          }
+
+          .first-hidden__left .arrow-btn {
+              display: none;
+          }
       }
 	</style>
 </head>
@@ -725,7 +769,7 @@
 						</div>
 						<div class="project-f__bottom">
 							<div class="project-f__number">1</div>
-							<button type="button" class="arrow-btn js-show-hidden" data-id="first-hidden">
+							<button type="button" class="arrow-btn js-show-hidden" data-id="first-hidden" data-start-text="SHOW MORE" data-hide-text="SHOW LESS">
 								<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
 								</svg>
@@ -795,6 +839,12 @@
 											</div>
 										</a>
 									</div>
+									<button type="button" class="arrow-btn js-hide-hidden" data-id="first-hidden">
+										<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
+										</svg>
+										<span class="arrow-btn__text">SHOW LESS</span>
+									</button>
 							</div>
 							<div class="first-hidden__pic first-hidden__pic--simple">
 								<img src="card1-opened.jpg" alt="" width="392" height="698">
@@ -816,7 +866,7 @@
 					</div>
 					<div class="project-f__bottom">
 						<div class="project-f__number">2</div>
-						<button type="button" class="arrow-btn">
+						<button type="button" class="arrow-btn js-show-hidden" data-id="second-hidden" data-start-text="SHOW MORE" data-hide-text="SHOW LESS">
 							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
 							</svg>
@@ -986,7 +1036,7 @@
 					</div>
 					<div class="project-f__bottom">
 						<div class="project-f__number">3</div>
-						<button type="button" class="arrow-btn js-show-hidden" data-id="third-hidden">
+						<button type="button" class="arrow-btn js-show-hidden" data-id="third-hidden" data-start-text="SHOW MORE" data-hide-text="SHOW LESS">
 							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
 							</svg>
@@ -1065,23 +1115,49 @@
 		const showBtn = e.target.closest('.js-show-hidden');
 		const hideBtn = e.target.closest('.js-hide-hidden');
 
-		if (showBtn) {
-			const id = showBtn.dataset.id;
+	  if (showBtn) {
+		  const id = showBtn.dataset.id;
+		  const targetBlock = document.querySelector(`.js-hidden-block[data-id="${id}"]`);
+		  const isAlreadyOpen = targetBlock?.classList.contains('show');
 
-			document.querySelectorAll('.js-hidden-block').forEach(block => {
-				block.classList.toggle('show', block.dataset.id === id);
-			});
-		}
+		  document.querySelectorAll('.js-hidden-block').forEach(block => {
+			  block.classList.remove('show');
+		  });
 
-		if (hideBtn) {
-			const id = hideBtn.dataset.id;
+		  document.querySelectorAll('.js-show-hidden').forEach(btn => {
+			  const textEl = btn.querySelector('.arrow-btn__text');
+			  if (textEl) textEl.textContent = btn.dataset.startText;
+			  btn.classList.remove('opened');
+		  });
 
-			document.querySelectorAll('.js-hidden-block').forEach(block => {
-				if (block.dataset.id === id) {
-					block.classList.remove('show');
-				}
-			});
-		}
+		  if (!isAlreadyOpen) {
+			  document.querySelectorAll('.js-hidden-block').forEach(block => {
+				  block.classList.toggle('show', block.dataset.id === id);
+			  });
+
+			  document.querySelectorAll(`.js-show-hidden[data-id="${id}"]`).forEach(btn => {
+				  const textEl = btn.querySelector('.arrow-btn__text');
+				  if (textEl) textEl.textContent = btn.dataset.hideText;
+				  btn.classList.add('opened');
+			  });
+		  }
+	  }
+
+	  if (hideBtn) {
+		  const id = hideBtn.dataset.id;
+
+		  document.querySelectorAll('.js-hidden-block').forEach(block => {
+			  if (block.dataset.id === id) {
+				  block.classList.remove('show');
+			  }
+		  });
+
+		  document.querySelectorAll(`.js-show-hidden[data-id="${id}"]`).forEach(btn => {
+			  const textEl = btn.querySelector('.arrow-btn__text');
+			  if (textEl) textEl.textContent = btn.dataset.startText;
+			  btn.classList.remove('opened');
+		  });
+	  }
 
 		document.querySelectorAll('.js-wrap-list').forEach(wrap => {
 			const hasOpened = wrap.querySelector('.js-hidden-block.show') !== null;
