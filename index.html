@@ -157,6 +157,14 @@
           opacity: 0;
       }
 
+      .project-f:hover .project-f__bottom {
+		      pointer-events: none;
+      }
+
+      .project-f:hover .project-f__bottom .arrow-btn {
+		      pointer-events: all;
+      }
+
       .projects-wrap__duga {
           width: 39px;
           height: 42px;
@@ -453,7 +461,6 @@
 		      overflow: hidden;
       }
 
-
       .accordion-custom__hidden-inner {
           border: 1px solid #000;
           border-radius: 15px;
@@ -596,7 +603,7 @@
 			</svg>
 		</div>
 		<!-- f-list -->
-		<div class="projects-wrap__list js-wrap-list has-opened">
+		<div class="projects-wrap__list js-wrap-list">
 			<!-- f-card -->
 			<div class="project-item">
 					<div class="project-f">
@@ -709,7 +716,7 @@
 						<img src="card2.jpg" alt="" width="417" height="658">
 					</div>
 				</div>
-				<div class="first-hidden first-hidden--sec js-hidden-block show" data-id="second-hidden">
+				<div class="first-hidden first-hidden--sec js-hidden-block" data-id="second-hidden">
 					<div class="first-hidden__left first-hidden__left--sec js-acc-wrap">
 						<div class="accordion-custom js-acc active" data-image="card2-opened.jpg">
 							<div class="acc-btn js-open-acc">
@@ -849,7 +856,7 @@
 					</div>
 					<div class="first-hidden__pic first-hidden__pic--simple">
 						<img src="card2-opened.jpg" class="js-change-img" alt="" width="392" height="698">
-						<button type="button" class="arrow-btn js-hide-hidden" data-id="first-hidden">
+						<button type="button" class="arrow-btn js-hide-hidden" data-id="second-hidden">
 							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
 							</svg>
@@ -936,9 +943,9 @@
 		  if (parentItem.classList.contains('active')) {
 			  accBlock.style.maxHeight = accBlock.scrollHeight + "px";
 		  }
-		  // setTimeout(() => {
-			//   accBlock.style.transition = 'max-height 0.2s linear, margin 0.2s linear';
-		  // }, 10);
+		  setTimeout(() => {
+			  accBlock.style.transition = 'max-height 0.2s linear, margin 0.2s linear';
+		  }, 10);
 
 		  let previousHeight = accBlock.scrollHeight;
 		  setInterval(() => {
