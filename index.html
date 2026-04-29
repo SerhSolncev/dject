@@ -400,12 +400,24 @@
           color: #dc4c2b;
       }
 
+      .accordion-custom.active {
+          position: relative;
+          z-index: 1;
+          margin: 0 0 -13px;
+      }
+
+      .accordion-custom.active ~ .accordion-custom .acc-btn {
+		      border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          padding-top: 25px;
+      }
+
       .accordion-custom__pic {
 		      display: flex;
 		      justify-content: center;
 		      align-items: center;
 		      aspect-ratio: 623/228;
-          margin: -19px 0 0;
+          margin: -19px 0 -44px;
 
       }
 
@@ -423,6 +435,7 @@
           border: 1px solid #000;
           border-radius: 15px;
           padding: 52px 30px;
+          background-color: #fff;
       }
 
       .acc-btn {
@@ -431,9 +444,10 @@
 		      justify-content: space-between;
 		      gap: 20px;
           background-color: #f77b5f;
-          padding: 20px 24px;
+          padding: 18px 24px;
 		      border-radius: 15px;
 		      cursor: pointer;
+          border: 1px solid #000;
       }
 
       .accordion-custom.active .acc-btn {
