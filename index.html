@@ -617,6 +617,12 @@
           border-radius: 8px;
       }
 
+      @media(max-width: 1560px) {
+          .big-title__title {
+		          font-size: 72px;
+          }
+      }
+
       @media(max-width: 1366px) {
           .text-block {
 		          flex-direction: column;
@@ -626,9 +632,19 @@
           .text-block svg {
 		          transform: none;
           }
+
+					.big-title__bottom {
+							flex-direction: column;
+							align-items: flex-start;
+              margin: 0 0 36px;
+					}
       }
 
       @media(max-width: 1199px) {
+
+          .big-title__title {
+              font-size: 44px;
+          }
 
           .text-block__item {
 		          font-size: 28px;
