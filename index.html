@@ -243,6 +243,10 @@
           display: none;
       }
 
+      .first-hidden--sec {
+          padding: 6px 53px 7px 0;
+      }
+
       .first-hidden.show {
           display: flex;
       }
@@ -325,6 +329,17 @@
           z-index: 2;
       }
 
+      .first-hidden__left {
+          width: 100%;
+		      align-self: stretch;
+      }
+
+      .first-hidden__left--sec {
+		      border: 1px solid #000;
+		      border-radius: 15px;
+          padding: 24px;
+      }
+
       .mini-card {
           display: flex;
           align-items: center;
@@ -363,6 +378,14 @@
       .mini-card__text {
           font: 500 15.5px/1.3 'Inter';
           color: #000000;
+      }
+
+      .mini-card--sec .mini-card__title {
+
+      }
+
+      .mini-card--sec .mini-card__body {
+		      max-width: 356px;
       }
 
       .mini-card:hover .mini-card__title {
@@ -500,10 +523,10 @@
 					</div>
 				</div>
 				<div class="first-hidden first-hidden--sec js-hidden-block show" data-id="second-hidden">
-					<div class="first-hidden__left">
+					<div class="first-hidden__left first-hidden__left--sec">
 						<div class="accordion-custom">
 							<div class="accordion-custom__btn"></div>
-							<div class="mini-card mini-card--sec">
+							<a href="#!" class="mini-card mini-card--sec">
 								<div class="mini-card__pic">
 									<img src="mini-card6.jpg" alt="" width="270" height="82">
 								</div>
@@ -511,7 +534,7 @@
 									<div class="mini-card__title">koshernye pilotky</div>
 									<div class="mini-card__text">Author-led YouTube show combining psychology and creative practice.</div>
 								</div>
-							</div>
+							</a>
 							<div class="first-hidden__sub">
 								<span>Role:</span> Creator / Host / Producer
 							</div>
