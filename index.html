@@ -50,12 +50,21 @@
           padding: 32px 5.5% 26px 0;
       }
 
+      .has-opened.projects-wrap__list {
+          display: block;
+          padding: 0;
+      }
+
       .project-item {
           display: flex;
       }
 
       .project-item:not(:last-child) {
 		      border-right: 1px solid #000;
+      }
+
+      .has-opened .project-item {
+          border: none;
       }
 
       .project-f {
@@ -66,6 +75,10 @@
 		      align-self: stretch;
           padding: 0 8px 33px 28px;
 		      position: relative;
+      }
+
+      .has-opened .project-f {
+          display: none;
       }
 
       .project-f__pic {
@@ -221,7 +234,7 @@
           width: 100%;
 		      align-items: flex-start;
 		      gap: 40px;
-          padding: 11px 53px 14px 27px;
+          padding: 11px 53px 7px 27px;
           display: none;
       }
 
@@ -234,18 +247,6 @@
           color: #000000;
           text-transform: uppercase;
           margin: 0 0 18px;
-      }
-
-      .first-hidden__pic {
-          z-index: 1;
-          aspect-ratio: 392/698;
-          transition: opacity 0.15s ease-in;
-          cursor: pointer;
-		      align-self: stretch;
-		      flex-shrink: 0;
-		      position: relative;
-          max-width: 392px;
-          margin: -4px 0 0 auto;
       }
 
       .first-hidden__sub {
@@ -276,9 +277,34 @@
 
       .first-hidden__pic .arrow-btn {
 		      position: absolute;
-		      bottom: 24px;
-		      right: 24px;
+          bottom: 24px;
+          right: 18px;
 		      z-index: 2;
+      }
+
+      .first-hidden__pic {
+          z-index: 1;
+          aspect-ratio: 392/698;
+          transition: opacity 0.15s ease-in;
+          cursor: pointer;
+          align-self: stretch;
+          flex-shrink: 0;
+          position: relative;
+          max-width: 392px;
+          margin: -4px 0 0 auto;
+      }
+
+      .first-hidden__pic::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: -17px;
+          z-index: 1;
+          width: 60%;
+          height: 100%;
+          background-color: #f77b5f;
+		      border-radius: 15px;
       }
 
       .first-hidden__pic img {
@@ -286,6 +312,8 @@
           height: 100%;
           object-fit: cover;
           border-radius: 16px;
+		      position: relative;
+          z-index: 2;
       }
 
       .mini-card {
