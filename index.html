@@ -299,6 +299,10 @@
           margin: -4px 0 0 auto;
       }
 
+      .first-hidden__pic--simple {
+		     cursor: default;
+      }
+
       .first-hidden__pic::after {
           content: '';
           display: block;
@@ -382,7 +386,7 @@
 			</svg>
 		</div>
 		<!-- f-list -->
-		<div class="projects-wrap__list js-wrap-list">
+		<div class="projects-wrap__list js-wrap-list has-opened">
 			<!-- f-card -->
 			<div class="project-item">
 					<div class="project-f">
@@ -491,8 +495,36 @@
 							<span class="arrow-btn__text">SHOW MORE</span>
 						</button>
 					</div>
-					<div class="project-f__pic">
+					<div class="project-f__pic js-show-hidden" data-id="second-hidden">
 						<img src="card2.jpg" alt="" width="417" height="658">
+					</div>
+				</div>
+				<div class="first-hidden first-hidden--sec js-hidden-block show" data-id="second-hidden">
+					<div class="first-hidden__left">
+						<div class="accordion-custom">
+							<div class="accordion-custom__btn"></div>
+							<div class="mini-card mini-card--sec">
+								<div class="mini-card__pic">
+									<img src="mini-card6.jpg" alt="" width="270" height="82">
+								</div>
+								<div class="mini-card__body">
+									<div class="mini-card__title">koshernye pilotky</div>
+									<div class="mini-card__text">Author-led YouTube show combining psychology and creative practice.</div>
+								</div>
+							</div>
+							<div class="first-hidden__sub">
+								<span>Role:</span> Creator / Host / Producer
+							</div>
+						</div>
+					</div>
+					<div class="first-hidden__pic first-hidden__pic--simple">
+						<img src="card2-opened.jpg" alt="" width="392" height="698">
+						<button type="button" class="arrow-btn js-hide-hidden" data-id="first-hidden">
+							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
+							</svg>
+							<span class="arrow-btn__text">SHOW LESS</span>
+						</button>
 					</div>
 				</div>
 			</div>
