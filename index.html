@@ -410,17 +410,29 @@
 
       .accordion-custom {
           margin: 0 0 -13px;
+		      position: relative;
       }
 
-      .accordion-custom.active {
-          position: relative;
+      .accordion-custom:nth-child(1) {
+          z-index: 4;
+      }
+
+      .accordion-custom:nth-child(2) {
+          z-index: 3;
+      }
+
+      .accordion-custom:nth-child(3) {
+          z-index: 2;
+      }
+
+      .accordion-custom:nth-child(4) {
           z-index: 1;
       }
 
-      .accordion-custom.active ~ .accordion-custom .acc-btn {
-		      border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          padding-top: 25px;
+
+      .accordion-custom.active {
+          position: relative;
+          z-index: 10;
       }
 
       .accordion-custom__pic {
@@ -483,10 +495,20 @@
 		      gap: 20px;
           background-color: #f77b5f;
           padding: 18px 24px;
-		      border-radius: 15px;
+		      border-radius: 15px 15px 0 0;
 		      cursor: pointer;
           border: 1px solid #000;
       }
+
+
+      .accordion-custom.active ~ .accordion-custom .acc-btn {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          border-bottom-left-radius: 15px;
+          border-bottom-right-radius: 15px;
+          padding-top: 25px;
+      }
+
 
       .accordion-custom.active .acc-btn {
           display: none;
@@ -774,7 +796,7 @@
 
 						<div class="accordion-custom accordion-custom--th js-acc active">
 							<div class="acc-btn js-open-acc">
-								<div class="acc-btn__text">Human Rights Defender in Law (RUTUBE)</div>
+								<div class="acc-btn__text">Human Rights Defender <br> in Law (RUTUBE)</div>
 								<div class="acc-btn__icon">
 									<svg width="61" height="11" viewBox="0 0 61 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M0.699219 4.45479C0.312619 4.45479 -0.000781238 4.76819 -0.000781238 5.15479C-0.000781238 5.54138 0.312619 5.85479 0.699219 5.85479V5.15479V4.45479ZM60.6942 5.64976C60.9676 5.37639 60.9676 4.93318 60.6942 4.65981L56.2394 0.205038C55.9661 -0.0683293 55.5228 -0.0683293 55.2495 0.205038C54.9761 0.478405 54.9761 0.92162 55.2495 1.19499L59.2093 5.15479L55.2495 9.11458C54.9761 9.38795 54.9761 9.83117 55.2495 10.1045C55.5228 10.3779 55.9661 10.3779 56.2394 10.1045L60.6942 5.64976ZM0.699219 5.15479V5.85479H60.1992V5.15479V4.45479H0.699219V5.15479Z" fill="black"/>
