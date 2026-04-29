@@ -64,10 +64,6 @@
 		      border-right: 1px solid #000;
       }
 
-      .project-item:hover {
-				border-color: transparent;
-      }
-
       .project-f {
           width: 100%;
           display: flex;
@@ -143,10 +139,6 @@
       .project-f:hover .project-f__pic {
           opacity: 1;
           pointer-events: all;
-      }
-
-      .project-f:hover .project-f__number {
-          opacity: 0;
       }
 
       .project-f:hover .project-f__bottom {
@@ -625,7 +617,26 @@
           border-radius: 8px;
       }
 
+      @media(max-width: 1366px) {
+          .text-block {
+		          flex-direction: column;
+		          align-items: flex-start;
+          }
+
+          .text-block svg {
+		          transform: none;
+          }
+      }
+
       @media(max-width: 1199px) {
+
+          .text-block__item {
+		          font-size: 28px;
+          }
+
+          .accordion-custom--sec .accordion-custom__hidden-inner {
+              padding: 16px;
+          }
 
           .project-item:not(:last-child) {
               border-right: none;
@@ -765,6 +776,14 @@
       }
 
       @media(min-width: 1200px) {
+
+          .project-f:hover .project-f__number {
+              opacity: 0;
+          }
+
+          .project-item:hover {
+              border-color: transparent;
+          }
 
           .has-opened .project-f {
               display: none;
@@ -1052,6 +1071,13 @@
 								</div>
 							</div>
 						</div>
+
+						<button type="button" class="arrow-btn js-hide-hidden" data-id="second-hidden">
+							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
+							</svg>
+							<span class="arrow-btn__text">SHOW LESS</span>
+						</button>
 					</div>
 					<div class="first-hidden__pic first-hidden__pic--simple">
 						<img src="card2-opened.jpg" class="js-change-img" alt="" width="392" height="698">
