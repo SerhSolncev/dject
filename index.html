@@ -1094,7 +1094,7 @@
 </head>
 <body>
 <br><br><br><br><br><br>
-	<div class="projects-wrap">
+	<div class="projects-wrap js-projects-wrap">
 		<div class="projects-wrap__duga projects-wrap__duga--lt"></div>
 		<div class="projects-wrap__duga projects-wrap__duga--rb"></div>
 		<div class="projects-wrap__arrow projects-wrap__arrow--top">
@@ -1480,7 +1480,6 @@
 			const targetBlock = document.querySelector(`.js-hidden-block[data-id="${id}"]`);
 			const isAlreadyOpen = targetBlock?.classList.contains('show');
 
-			// Закрываем все открытые блоки
 			document.querySelectorAll('.js-hidden-block').forEach(block => {
 				if (block.classList.contains('show')) {
 					closeBlock(block);
@@ -1522,71 +1521,99 @@
 		});
 	});
 
-  function openBlock(block, id) {
-	  block.classList.add('show');
+	function adjustParentHeight(block) {
+		const parent = document.querySelector('.js-projects-wrap');
+		if (!parent) return;
 
-	  // Запускаем видео — вставляем src из data-src
-	  const video = block.querySelector('.js-yt-video');
-	  if (video && video.dataset.src) {
-		  video.src = video.dataset.src;
-	  }
+		parent.style.minHeight = '';
 
-	  if (id === 'first-hidden') {
-		  const img = block.querySelector('.js-move-imag');
-		  const cards = block.querySelectorAll('.js-list-block .mini-card');
+		const parentRect = parent.getBoundingClientRect();
+		const blockRect = block.getBoundingClientRect();
 
-		  if (img) {
-			  img.style.transition = 'none';
-			  img.style.transform = 'translateX(calc(-100% - 40px))';
-			  img.style.opacity = '0';
+		const blockBottom = blockRect.top - parentRect.top + blockRect.height;
 
-			  requestAnimationFrame(() => {
-				  requestAnimationFrame(() => {
-					  img.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease';
-					  img.style.transform = 'translateX(0)';
-					  img.style.opacity = '1';
-				  });
-			  });
-		  }
+		if (blockBottom > parentRect.height) {
+			parent.style.minHeight = blockBottom + 20 + 'px';
+		}
+	}
 
-		  cards.forEach((card, i) => {
-			  card.style.transition = 'none';
-			  card.style.opacity = '0';
-			  card.style.transform = 'translateY(12px)';
+	function resetParentHeight() {
+		const parent = document.querySelector('.js-projects-wrap');
+		if (!parent) return;
+		parent.style.minHeight = '';
+	}
 
-			  setTimeout(() => {
-				  card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-				  card.style.opacity = '1';
-				  card.style.transform = 'translateY(0)';
-			  }, 120 + i * 80);
-		  });
-	  }
-  }
+	function openBlock(block, id) {
+		block.classList.add('show');
 
-  function closeBlock(block) {
-	  // Останавливаем видео — очищаем src
-	  const video = block.querySelector('.js-yt-video');
-	  if (video) {
-		  video.src = '';
-	  }
+		const video = block.querySelector('.js-yt-video');
+		if (video && video.dataset.src) {
+			video.src = video.dataset.src;
+		}
 
-	  const img = block.querySelector('.js-move-imag');
-	  const cards = block.querySelectorAll('.js-list-block .mini-card');
+		if (id === 'first-hidden') {
+			const img = block.querySelector('.js-move-imag');
+			const cards = block.querySelectorAll('.js-list-block .mini-card');
 
-	  if (img) {
-		  img.style.transition = 'none';
-		  img.style.transform = '';
-		  img.style.opacity = '';
-	  }
+			if (img) {
+				img.style.transition = 'none';
+				img.style.transform = 'translateX(calc(-100% - 40px))';
+				img.style.opacity = '0';
 
-	  cards.forEach(card => {
-		  card.style.transition = 'none';
-		  card.style.opacity = '';
-		  card.style.transform = '';
-	  });
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						img.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease';
+						img.style.transform = 'translateX(0)';
+						img.style.opacity = '1';
+					});
+				});
+			}
 
-	  block.classList.remove('show');
-  }
+			cards.forEach((card, i) => {
+				card.style.transition = 'none';
+				card.style.opacity = '0';
+				card.style.transform = 'translateY(12px)';
+
+				setTimeout(() => {
+					card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+					card.style.opacity = '1';
+					card.style.transform = 'translateY(0)';
+				}, 120 + i * 80);
+			});
+		}
+
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				adjustParentHeight(block);
+			});
+		});
+	}
+
+	function closeBlock(block) {
+		const video = block.querySelector('.js-yt-video');
+		if (video) {
+			video.src = '';
+		}
+
+		const img = block.querySelector('.js-move-imag');
+		const cards = block.querySelectorAll('.js-list-block .mini-card');
+
+		if (img) {
+			img.style.transition = 'none';
+			img.style.transform = '';
+			img.style.opacity = '';
+		}
+
+		cards.forEach(card => {
+			card.style.transition = 'none';
+			card.style.opacity = '';
+			card.style.transform = '';
+		});
+
+		block.classList.remove('show');
+
+		resetParentHeight();
+	}
 
   // acc
   const accs = document.querySelectorAll('.js-acc-wrap');
