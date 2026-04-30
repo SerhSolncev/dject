@@ -1153,7 +1153,7 @@
 										<span class="arrow-btn__text">SHOW LESS</span>
 									</button>
 							</div>
-							<div class="first-hidden__pic first-hidden__pic--simple">
+							<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
 								<img src="https://static.tildacdn.com/tild6264-3336-4363-b765-333563356363/card1-opened.webp" alt="" width="392" height="698">
 								<button type="button" class="arrow-btn js-hide-hidden" data-id="first-hidden">
 									<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1429,55 +1429,111 @@
 		const showBtn = e.target.closest('.js-show-hidden');
 		const hideBtn = e.target.closest('.js-hide-hidden');
 
-	  if (showBtn) {
-		  const id = showBtn.dataset.id;
-		  const targetBlock = document.querySelector(`.js-hidden-block[data-id="${id}"]`);
-		  const isAlreadyOpen = targetBlock?.classList.contains('show');
+		if (showBtn) {
+			const id = showBtn.dataset.id;
+			const targetBlock = document.querySelector(`.js-hidden-block[data-id="${id}"]`);
+			const isAlreadyOpen = targetBlock?.classList.contains('show');
 
-		  document.querySelectorAll('.js-hidden-block').forEach(block => {
-			  block.classList.remove('show');
-		  });
+			// Закрываем все открытые блоки
+			document.querySelectorAll('.js-hidden-block').forEach(block => {
+				if (block.classList.contains('show')) {
+					closeBlock(block);
+				}
+			});
 
-		  document.querySelectorAll('.js-show-hidden').forEach(btn => {
-			  const textEl = btn.querySelector('.arrow-btn__text');
-			  if (textEl) textEl.textContent = btn.dataset.startText;
-			  btn.classList.remove('opened');
-		  });
+			document.querySelectorAll('.js-show-hidden').forEach(btn => {
+				const textEl = btn.querySelector('.arrow-btn__text');
+				if (textEl) textEl.textContent = btn.dataset.startText;
+				btn.classList.remove('opened');
+			});
 
-		  if (!isAlreadyOpen) {
-			  document.querySelectorAll('.js-hidden-block').forEach(block => {
-				  block.classList.toggle('show', block.dataset.id === id);
-			  });
+			if (!isAlreadyOpen && targetBlock) {
+				openBlock(targetBlock, id);
 
-			  document.querySelectorAll(`.js-show-hidden[data-id="${id}"]`).forEach(btn => {
-				  const textEl = btn.querySelector('.arrow-btn__text');
-				  if (textEl) textEl.textContent = btn.dataset.hideText;
-				  btn.classList.add('opened');
-			  });
-		  }
-	  }
+				document.querySelectorAll(`.js-show-hidden[data-id="${id}"]`).forEach(btn => {
+					const textEl = btn.querySelector('.arrow-btn__text');
+					if (textEl) textEl.textContent = btn.dataset.hideText;
+					btn.classList.add('opened');
+				});
+			}
+		}
 
-	  if (hideBtn) {
-		  const id = hideBtn.dataset.id;
+		if (hideBtn) {
+			const id = hideBtn.dataset.id;
+			const block = document.querySelector(`.js-hidden-block[data-id="${id}"]`);
+			if (block) closeBlock(block);
 
-		  document.querySelectorAll('.js-hidden-block').forEach(block => {
-			  if (block.dataset.id === id) {
-				  block.classList.remove('show');
-			  }
-		  });
-
-		  document.querySelectorAll(`.js-show-hidden[data-id="${id}"]`).forEach(btn => {
-			  const textEl = btn.querySelector('.arrow-btn__text');
-			  if (textEl) textEl.textContent = btn.dataset.startText;
-			  btn.classList.remove('opened');
-		  });
-	  }
+			document.querySelectorAll(`.js-show-hidden[data-id="${id}"]`).forEach(btn => {
+				const textEl = btn.querySelector('.arrow-btn__text');
+				if (textEl) textEl.textContent = btn.dataset.startText;
+				btn.classList.remove('opened');
+			});
+		}
 
 		document.querySelectorAll('.js-wrap-list').forEach(wrap => {
 			const hasOpened = wrap.querySelector('.js-hidden-block.show') !== null;
 			wrap.classList.toggle('has-opened', hasOpened);
 		});
 	});
+
+	function openBlock(block, id) {
+		block.classList.add('show');
+
+		// Анимация картинки — только для first-hidden
+		if (id === 'first-hidden') {
+			const img = block.querySelector('.js-move-imag');
+			const cards = block.querySelectorAll('.js-list-block .mini-card');
+
+			if (img) {
+				// Стартовая позиция — картинка в левой части поверх контента
+				img.style.transition = 'none';
+				img.style.transform = 'translateX(calc(-100% - 40px))';
+				img.style.opacity = '0';
+
+				// Небольшая задержка чтобы transition: none применился
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						img.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease';
+						img.style.transform = 'translateX(0)';
+						img.style.opacity = '1';
+					});
+				});
+			}
+
+			// Карточки появляются поочерёдно
+			cards.forEach((card, i) => {
+				card.style.transition = 'none';
+				card.style.opacity = '0';
+				card.style.transform = 'translateY(12px)';
+
+				setTimeout(() => {
+					card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+					card.style.opacity = '1';
+					card.style.transform = 'translateY(0)';
+				}, 120 + i * 80);
+			});
+		}
+	}
+
+	function closeBlock(block) {
+		const img = block.querySelector('.js-move-imag');
+		const cards = block.querySelectorAll('.js-list-block .mini-card');
+
+		// Сброс анимаций при закрытии
+		if (img) {
+			img.style.transition = 'none';
+			img.style.transform = '';
+			img.style.opacity = '';
+		}
+
+		cards.forEach(card => {
+			card.style.transition = 'none';
+			card.style.opacity = '';
+			card.style.transform = '';
+		});
+
+		block.classList.remove('show');
+	}
 
   // acc
   const accs = document.querySelectorAll('.js-acc-wrap');
