@@ -1230,7 +1230,7 @@
 					</div>
 				</div>
 				<div class="first-hidden first-hidden--sec js-hidden-block" data-id="second-hidden">
-					<div class="first-hidden__left first-hidden__left--sec js-acc-wrap">
+					<div class="first-hidden__left first-hidden__left--sec js-acc-wrap js-opacity-inner">
 						<div class="accordion-custom js-acc active" data-image="https://static.tildacdn.com/tild6631-6237-4130-b330-616435663936/card2-opened.webp">
 							<div class="acc-btn js-open-acc">
 								<div class="acc-btn__text">koshernye pilotki</div>
@@ -1374,7 +1374,7 @@
 							<span class="arrow-btn__text">SHOW LESS</span>
 						</button>
 					</div>
-					<div class="first-hidden__pic first-hidden__pic--simple">
+					<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
 						<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/McYbd0KcJYk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=McYbd0KcJYk"
 								src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 						<button type="button" class="arrow-btn js-hide-hidden" data-id="second-hidden">
@@ -1550,7 +1550,6 @@
 	  const video = block.querySelector('.js-yt-video');
 	  if (video && video.dataset.src) {
 		  const onTransitionEnd = (e) => {
-			  // Слушаем только transition самого блока, не дочерних элементов
 			  if (e.target !== block) return;
 			  block.removeEventListener('transitionend', onTransitionEnd);
 			  video.src = video.dataset.src;
@@ -1558,9 +1557,20 @@
 		  block.addEventListener('transitionend', onTransitionEnd);
 	  }
 
-		if (id === 'first-hidden') {
+		if (id === 'first-hidden' || id === 'second-hidden') {
 			const img = block.querySelector('.js-move-imag');
 			const cards = block.querySelectorAll('.js-list-block .mini-card');
+			const blockLeft = block.querySelector('.js-opacity-inner')
+
+		if(blockLeft) {
+		blockLeft.style.transition = 'none';
+		blockLeft.style.opacity = '0';
+
+		setTimeout(() => {
+			blockLeft.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+			blockLeft.style.opacity = '1';
+		}, 10);
+		}
 
 		if (img) {
 			img.style.transition = 'none';
