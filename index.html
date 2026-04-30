@@ -9,8 +9,14 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 	<style>
+
+			:root {
+          --t-headline-font: 'Novelist', Arial, sans-serif;
+          --t-text-font: 'Inter', Arial, sans-serif;
+			}
+
       @font-face {
-          font-family: var(--t-headline-font,Arial);
+          font-family: 'Novelist';
           src: url('Novelist-Display.woff2') format('woff2'),
           url('Novelist-Display.woff') format('woff');
           font-weight: normal;
@@ -19,7 +25,7 @@
       }
 
       body {
-		      font-family: var(--t-headline-font,Arial);
+		      font-family: 'Novelist';
       }
 
       * {
@@ -49,11 +55,7 @@
           display: grid;
           grid-template-columns: 32.25fr 35.19fr 32.56fr;
           padding: 32px 5.5% 26px 0;
-      }
-
-      .has-opened.projects-wrap__list {
-          display: block;
-          padding: 0;
+		      position: relative;
       }
 
       .project-item {
@@ -108,14 +110,14 @@
       }
 
       .project-f__title {
-		      font: 300 42px/1.15 var(--t-headline-font,Arial);
+		      font: 300 42px/1.15 'Novelist';
           color: #000000;
           text-transform: uppercase;
           margin: 0 0 103px;
       }
 
       .project-f__number {
-          font: 400 380px/1 var(--t-headline-font,Arial);
+          font: 400 380px/1 'Novelist';
           color: #000000;
           margin: 0 0 -24px;
       }
@@ -209,7 +211,7 @@
           display: flex;
           align-items: center;
 		      gap: 5px;
-          font: 500 15px/1.2 var(--t-text-font,Arial);
+          font: 500 15px/1.2 'Inter';
           color: #000000;
           padding: 3px 9px;
           text-transform: uppercase;
@@ -233,11 +235,19 @@
       }
 
       .first-hidden {
+          display: flex;
           width: 100%;
 		      align-items: flex-start;
 		      gap: 40px;
           padding: 11px 53px 7px 27px;
-          display: none;
+          opacity: 0;
+		      pointer-events: none;
+		      position: absolute;
+		      top: 0;
+		      left: 0;
+		      z-index: 1;
+          background-color: #fff;
+		      transition: opacity 0.15s ease-in;
       }
 
       .first-hidden--sec {
@@ -245,18 +255,19 @@
       }
 
       .first-hidden.show {
-          display: flex;
+          opacity: 1;
+		      pointer-events: all;
       }
 
       .first-hidden__title {
-          font: 300 60px/1 var(--t-headline-font,Arial);
+          font: 300 60px/1 'Novelist';
           color: #000000;
           text-transform: uppercase;
           margin: 0 0 18px;
       }
 
       .first-hidden__sub {
-          font: 400 30px/1.2 var(--t-headline-font,Arial);
+          font: 400 30px/1.2 'Novelist';
           color: #000000;
           text-transform: uppercase;
           letter-spacing: 0.005em;
@@ -271,7 +282,7 @@
       }
 
       .first-hidden__text {
-          font: 500 15.5px/1.3 var(--t-text-font,Arial);
+          font: 500 15.5px/1.3 'Inter';
           color: #000000;
           padding: 5px 0 0 78px;
       }
@@ -286,7 +297,7 @@
           display: flex;
 		      flex-direction: column;
           gap: 21px;
-          margin: 38px 0 0;
+          margin: 26px 0 0;
       }
 
       .first-hidden__pic .arrow-btn {
@@ -374,7 +385,7 @@
       }
 
       .mini-card__title {
-          font: 500 26px/1 var(--t-headline-font,Arial);
+          font: 500 26px/1 'Novelist';
           color: #dc4c2b;
           text-transform: uppercase;
 		      text-shadow: 0 0 0 #dc4c2b, 0 0 0 #dc4c2b;
@@ -382,7 +393,7 @@
       }
 
       .mini-card__text {
-          font: 500 15.5px/1.3 var(--t-text-font,Arial);
+          font: 500 15.5px/1.3 'Inter';
           color: #000000;
       }
 
@@ -535,7 +546,7 @@
       }
 
       .acc-btn__text {
-          font: 500 44px/1 var(--t-headline-font,Arial);
+          font: 500 44px/1 'Novelist';
           color: #000;
 		      transition: color 0.15s ease-in;
       }
@@ -565,7 +576,7 @@
       }
 
       .text-block__item {
-		      font: 400 34px/1.15 var(--t-headline-font,Arial);
+		      font: 400 34px/1.15 'Novelist';
       }
 
       .text-block__item--sec span {
@@ -583,7 +594,7 @@
       }
 
       .big-title__title {
-          font: 400 91px/1.15 var(--t-headline-font,Arial);
+          font: 400 91px/1.15 'Novelist';
       }
 
       .big-title__bottom {
@@ -600,14 +611,14 @@
       }
 
       .big-title__sub {
-          font: 400 30px/1 var(--t-headline-font,Arial);
+          font: 400 30px/1 'Novelist';
           color: #000000;
           text-transform: uppercase;
           letter-spacing: 0.005em;
       }
 
       .big-title__text {
-          font: 500 15.5px/1.3 var(--t-text-font,Arial);
+          font: 500 15.5px/1.3 'Inter';
           color: #000000;
 		      max-width: 280px;
       }
@@ -798,12 +809,13 @@
               opacity: 0;
           }
 
-          .project-item:hover {
-              border-color: transparent;
+          .has-opened .project-f {
+              opacity: 0;
+		          pointer-events: none;
           }
 
-          .has-opened .project-f {
-              display: none;
+          .project-item:hover {
+              border-color: transparent;
           }
 
           .has-opened .project-item {
@@ -812,6 +824,227 @@
 
           .first-hidden__left .arrow-btn {
               display: none;
+          }
+      }
+
+      @media (min-width: 1200px) and (max-width: 1920px) {
+
+          /* projects-wrap */
+          .projects-wrap {
+              width: calc(100% - 1.6667vw);
+              max-width: 1440px;
+              margin: 0 auto;
+              padding: 1.25vw;
+              position: relative;
+          }
+
+          /* projects-wrap__list */
+          .projects-wrap__list {
+              padding: 1.6667vw 5.5% 1.3542vw 0;
+          }
+
+          /* project-f */
+          .project-f {
+              padding: 0 0.4167vw 1.7188vw 1.4583vw;
+          }
+          .project-f__title {
+              font-size: 2.1875vw;
+              margin: 0 0 5.3646vw;
+          }
+          .project-f__number {
+              font-size: 19.7917vw;
+              margin: 0 0 -1.25vw;
+          }
+          .project-f--sec {
+              padding: 0 1.875vw 1.7188vw 1.4583vw;
+          }
+          .project-f--sec .arrow-btn {
+              transform: translateX(-0.9896vw);
+          }
+          .project-f--th {
+              padding: 0 0.1042vw 1.7188vw 1.875vw;
+          }
+          .project-f--th .arrow-btn {
+              transform: translateX(-0.2083vw);
+          }
+          .project-f .arrow-btn {
+              transform: translateX(-1.0417vw);
+          }
+
+          /* projects-wrap__duga */
+          .projects-wrap__duga {
+              width: 2.0313vw;
+              height: 2.1875vw;
+          }
+
+          /* projects-wrap__arrow */
+          .projects-wrap__arrow--top {
+              left: 3.3333vw;
+              width: calc(100% - 6.7188vw);
+          }
+          .projects-wrap__arrow--bottom {
+              right: 3.3333vw;
+              width: calc(100% - 7.1875vw);
+          }
+
+          /* arrow-btn */
+          .arrow-btn {
+              font-size: 0.7813vw;
+              padding: 0.1563vw 0.4688vw;
+              border-radius: 0.7813vw;
+              gap: 0.2604vw;
+          }
+          .arrow-btn svg {
+              width: 1.3021vw;
+              height: 0.4167vw;
+          }
+
+          /* first-hidden */
+          .first-hidden {
+              gap: 2.0833vw;
+              padding: 0.5729vw 2.7604vw 0.3646vw 1.4063vw;
+          }
+          .first-hidden--sec {
+              padding: 0.3125vw 2.7604vw 0.3646vw 0;
+          }
+          .first-hidden__title {
+              font-size: 3.125vw;
+              margin: 0 0 0.9375vw;
+          }
+          .first-hidden__sub {
+              font-size: 1.5625vw;
+          }
+          .first-hidden__sub--sec {
+              font-size: 1.3021vw;
+          }
+          .first-hidden__sub--th {
+              font-size: 1.7708vw;
+          }
+          .first-hidden__text {
+              font-size: 0.8073vw;
+              padding: 0.2604vw 0 0 4.0625vw;
+          }
+          .first-hidden__list {
+              gap: 1.0938vw;
+              margin: 1.3542vw 0 0;
+          }
+          .first-hidden__pic {
+              max-width: 20.4167vw;
+              min-height: 36.3542vw;
+              margin: -0.2083vw 0 0 auto;
+          }
+          .first-hidden__pic::after {
+              left: -0.8854vw;
+              border-radius: 0.7813vw;
+          }
+          .first-hidden__pic img {
+              border-radius: 0.8333vw;
+          }
+          .first-hidden__pic .arrow-btn {
+              bottom: 1.25vw;
+              right: 0.9375vw;
+          }
+
+          /* mini-card */
+          .mini-card {
+              gap: 1.0417vw;
+          }
+          .mini-card__pic {
+              border-radius: 0.7813vw;
+          }
+          .mini-card__body {
+              gap: 0.2083vw;
+          }
+          .mini-card__title {
+              font-size: 1.3542vw;
+          }
+          .mini-card__text {
+              font-size: 0.8073vw;
+          }
+          .mini-card--sec .mini-card__title {
+              font-size: 2.1875vw;
+          }
+          .mini-card--sec .mini-card__text {
+              max-width: 19.5313vw;
+          }
+
+          /* accordion-custom */
+          .accordion-custom {
+              margin: 0 0 -0.6771vw;
+          }
+          .accordion-custom__pic {
+              margin: -0.9896vw 0 -1.25vw;
+          }
+          .accordion-custom__hidden-inner {
+              border-radius: 0.7813vw;
+              padding: 1.6797vw 1.5625vw;
+          }
+          .accordion-custom--sec .accordion-custom__hidden-inner {
+              padding: 2.2396vw 1.9271vw 2.2917vw;
+          }
+          .accordion-custom--sec .first-hidden__sub {
+              margin: 0 0 1.1458vw;
+          }
+          .accordion-custom--th .accordion-custom__hidden-inner {
+              padding: 2.1875vw 1.4583vw 2.7083vw;
+          }
+          .accordion-custom--th .first-hidden__sub {
+              font-size: 1.9792vw;
+              margin: 0 0 1.875vw;
+          }
+          .accordion-custom--th .mini-card {
+              gap: 0.5208vw;
+              margin: 0 0 3.9583vw;
+          }
+          .accordion-custom--th .mini-card__title {
+              font-size: 1.6667vw;
+          }
+
+          /* acc-btn */
+          .acc-btn {
+              gap: 1.0417vw;
+              padding: 0.9375vw 1.25vw 1.6146vw;
+              border-radius: 0.7813vw 0.7813vw 0 0;
+          }
+          .accordion-custom.active ~ .accordion-custom .acc-btn {
+              border-bottom-left-radius: 0.7813vw;
+              border-bottom-right-radius: 0.7813vw;
+              padding-top: 1.3021vw;
+          }
+          .acc-btn__icon {
+              width: 5.2604vw;
+              height: 2.5521vw;
+              border-radius: 0.7813vw;
+          }
+          .acc-btn__icon svg {
+              width: 3.1771vw;
+              height: 0.5729vw;
+          }
+          .acc-btn__text {
+              font-size: 2.2917vw;
+          }
+
+          /* text-block */
+          .text-block__item {
+              font-size: 1.7708vw;
+          }
+
+          /* big-title */
+          .big-title__title {
+              font-size: 4.7396vw;
+          }
+          .big-title__sub {
+              font-size: 1.5625vw;
+          }
+          .big-title__bottom {
+              gap: 1.0417vw;
+          }
+          .big-title__titles {
+              gap: 0.2604vw;
+          }
+          .big-title__text {
+              font-size: 0.8073vw;
+              max-width: 14.5833vw;
           }
       }
 	</style>
@@ -861,7 +1094,7 @@
 										<span>Role:</span> Senior Creative Producer / Format Development
 									</div>
 									<div class="first-hidden__text">Large-scale prime-time entertainment formats for national broadcast.</div>
-									<div class="first-hidden__list">
+									<div class="first-hidden__list js-list-block">
 										<a href="#!" class="mini-card">
 											<div class="mini-card__pic">
 												<img src="https://static.tildacdn.com/tild3738-6264-4934-b437-323033333432/mini-card1.webp" alt="" width="270" height="82">
@@ -966,7 +1199,7 @@
 								<div class="accordion-custom__hidden-inner">
 									<a href="#!" class="mini-card mini-card--sec">
 										<div class="mini-card__pic">
-											<img src="mini-card4.webp" alt="" width="270" height="82">
+											<img src="https://static.tildacdn.com/tild3563-3263-4266-a166-346637303564/mini-card4.webp" alt="" width="270" height="82">
 										</div>
 										<div class="mini-card__body">
 											<div class="mini-card__title">koshernye pilotki</div>
@@ -1270,9 +1503,9 @@
 		  if (parentItem.classList.contains('active')) {
 			  accBlock.style.maxHeight = accBlock.scrollHeight + "px";
 		  }
-		  // setTimeout(() => {
-			//   accBlock.style.transition = 'max-height 0.2s linear, margin 0.2s linear';
-		  // }, 10);
+		  setTimeout(() => {
+			  accBlock.style.transition = 'max-height 0.2s linear, margin 0.2s linear';
+		  }, 10);
 
 		  let previousHeight = accBlock.scrollHeight;
 		  setInterval(() => {
