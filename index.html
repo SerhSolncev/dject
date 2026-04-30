@@ -318,6 +318,8 @@
           max-width: 392px;
 		      min-height: 698px;
           margin: -4px 0 0 auto;
+          background-color: #f77b5f;
+		      border-radius: 16px;
       }
 
       .first-hidden__pic--simple {
@@ -337,7 +339,7 @@
 		      border-radius: 15px;
       }
 
-      .first-hidden__pic img {
+      .first-hidden__pic img, .first-hidden__pic iframe {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -1171,7 +1173,8 @@
 									</button>
 							</div>
 							<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
-								<img src="https://static.tildacdn.com/tild6264-3336-4363-b765-333563356363/card1-opened.webp" alt="" width="392" height="698">
+								<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/nCDm7d5vJMA?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=nCDm7d5vJMA"
+										src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 								<button type="button" class="arrow-btn js-hide-hidden" data-id="first-hidden">
 									<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
@@ -1347,7 +1350,8 @@
 						</button>
 					</div>
 					<div class="first-hidden__pic first-hidden__pic--simple">
-						<img src="https://static.tildacdn.com/tild6631-6237-4130-b330-616435663936/card2-opened.webp" class="js-change-img" alt="" width="392" height="698">
+						<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/nCDm7d5vJMA?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=nCDm7d5vJMA"
+								src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 						<button type="button" class="arrow-btn js-hide-hidden" data-id="second-hidden">
 							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
@@ -1427,7 +1431,8 @@
 						</div>
 					</div>
 					<div class="first-hidden__pic first-hidden__pic--simple">
-						<img src="https://static.tildacdn.com/tild6533-3566-4564-a662-386364353432/card5-opened.webp" alt="" width="392" height="698">
+						<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/Hra4aR4G6A4?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=Hra4aR4G6A4"
+								src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 						<button type="button" class="arrow-btn js-hide-hidden" data-id="third-hidden">
 							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
@@ -1493,64 +1498,71 @@
 		});
 	});
 
-	function openBlock(block, id) {
-		block.classList.add('show');
+  function openBlock(block, id) {
+	  block.classList.add('show');
 
-		// Анимация картинки — только для first-hidden
-		if (id === 'first-hidden') {
-			const img = block.querySelector('.js-move-imag');
-			const cards = block.querySelectorAll('.js-list-block .mini-card');
+	  // Запускаем видео — вставляем src из data-src
+	  const video = block.querySelector('.js-yt-video');
+	  if (video && video.dataset.src) {
+		  video.src = video.dataset.src;
+	  }
 
-			if (img) {
-				// Стартовая позиция — картинка в левой части поверх контента
-				img.style.transition = 'none';
-				img.style.transform = 'translateX(calc(-100% - 40px))';
-				img.style.opacity = '0';
+	  if (id === 'first-hidden') {
+		  const img = block.querySelector('.js-move-imag');
+		  const cards = block.querySelectorAll('.js-list-block .mini-card');
 
-				// Небольшая задержка чтобы transition: none применился
-				requestAnimationFrame(() => {
-					requestAnimationFrame(() => {
-						img.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease';
-						img.style.transform = 'translateX(0)';
-						img.style.opacity = '1';
-					});
-				});
-			}
+		  if (img) {
+			  img.style.transition = 'none';
+			  img.style.transform = 'translateX(calc(-100% - 40px))';
+			  img.style.opacity = '0';
 
-			// Карточки появляются поочерёдно
-			cards.forEach((card, i) => {
-				card.style.transition = 'none';
-				card.style.opacity = '0';
-				card.style.transform = 'translateY(12px)';
+			  requestAnimationFrame(() => {
+				  requestAnimationFrame(() => {
+					  img.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease';
+					  img.style.transform = 'translateX(0)';
+					  img.style.opacity = '1';
+				  });
+			  });
+		  }
 
-				setTimeout(() => {
-					card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-					card.style.opacity = '1';
-					card.style.transform = 'translateY(0)';
-				}, 120 + i * 80);
-			});
-		}
-	}
+		  cards.forEach((card, i) => {
+			  card.style.transition = 'none';
+			  card.style.opacity = '0';
+			  card.style.transform = 'translateY(12px)';
 
-	function closeBlock(block) {
-		const img = block.querySelector('.js-move-imag');
-		const cards = block.querySelectorAll('.js-list-block .mini-card');
+			  setTimeout(() => {
+				  card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+				  card.style.opacity = '1';
+				  card.style.transform = 'translateY(0)';
+			  }, 120 + i * 80);
+		  });
+	  }
+  }
 
-		// Сброс анимаций при закрытии
-		if (img) {
-			img.style.transition = 'none';
-			img.style.transform = '';
-			img.style.opacity = '';
-		}
+  function closeBlock(block) {
+	  // Останавливаем видео — очищаем src
+	  const video = block.querySelector('.js-yt-video');
+	  if (video) {
+		  video.src = '';
+	  }
 
-		cards.forEach(card => {
-			card.style.transition = 'none';
-			card.style.opacity = '';
-			card.style.transform = '';
-		});
+	  const img = block.querySelector('.js-move-imag');
+	  const cards = block.querySelectorAll('.js-list-block .mini-card');
 
-		block.classList.remove('show');
-	}
+	  if (img) {
+		  img.style.transition = 'none';
+		  img.style.transform = '';
+		  img.style.opacity = '';
+	  }
+
+	  cards.forEach(card => {
+		  card.style.transition = 'none';
+		  card.style.opacity = '';
+		  card.style.transform = '';
+	  });
+
+	  block.classList.remove('show');
+  }
 
   // acc
   const accs = document.querySelectorAll('.js-acc-wrap');
