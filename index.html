@@ -308,18 +308,19 @@
       }
 
       .first-hidden__pic {
-          z-index: 1;
           aspect-ratio: 392/698;
           transition: opacity 0.15s ease-in;
           cursor: pointer;
           align-self: stretch;
           flex-shrink: 0;
           position: relative;
+          z-index: 2;
           max-width: 392px;
 		      min-height: 698px;
-          margin: -4px 0 0 auto;
+          margin: 0 0 0 auto;
           background-color: #f77b5f;
 		      border-radius: 16px;
+		      overflow: hidden;
       }
 
       .first-hidden__pic--simple {
@@ -339,6 +340,23 @@
 		      border-radius: 15px;
       }
 
+      .first-hidden__pic-wrap {
+		      position: relative;
+      }
+
+      .first-hidden__pic-wrap::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: -17px;
+          z-index: 1;
+          width: 60%;
+          height: 100%;
+          background-color: #f77b5f;
+          border-radius: 15px;
+      }
+
       .first-hidden__pic img, .first-hidden__pic iframe {
           width: 100%;
           height: 100%;
@@ -346,6 +364,11 @@
           border-radius: 16px;
 		      position: relative;
           z-index: 2;
+      }
+
+      .first-hidden__pic iframe {
+          transform: translateY(-60px);
+          height: calc(100% + 120px);
       }
 
       .first-hidden__left {
@@ -673,7 +696,11 @@
 		          min-height: initial;
           }
 
-          .first-hidden__pic::after {
+          .first-hidden__pic-wrap {
+              width: calc(100% - 70px);
+          }
+
+          .first-hidden__pic-wrap::after {
               display: none;
           }
 
@@ -975,7 +1002,7 @@
           .first-hidden__pic {
               max-width: 20.4167vw;
               min-height: 36.3542vw;
-              margin: -0.2083vw 0 0 auto;
+              margin: 0 0 0 auto;
           }
           .first-hidden__pic::after {
               left: -0.8854vw;
@@ -1197,6 +1224,7 @@
 										<span class="arrow-btn__text">SHOW LESS</span>
 									</button>
 							</div>
+						<div class="first-hidden__pic-wrap">
 							<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
 								<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/nCDm7d5vJMA?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=nCDm7d5vJMA"
 										src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -1207,6 +1235,8 @@
 									<span class="arrow-btn__text">SHOW LESS</span>
 								</button>
 							</div>
+						</div>
+
 					</div>
 			</div>
 
@@ -1374,16 +1404,19 @@
 							<span class="arrow-btn__text">SHOW LESS</span>
 						</button>
 					</div>
-					<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
-						<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/McYbd0KcJYk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=McYbd0KcJYk"
-								src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-						<button type="button" class="arrow-btn js-hide-hidden" data-id="second-hidden">
-							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
-							</svg>
-							<span class="arrow-btn__text">SHOW LESS</span>
-						</button>
+					<div class="first-hidden__pic-wrap">
+						<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
+							<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/McYbd0KcJYk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=McYbd0KcJYk"
+									src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+							<button type="button" class="arrow-btn js-hide-hidden" data-id="second-hidden">
+								<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
+								</svg>
+								<span class="arrow-btn__text">SHOW LESS</span>
+							</button>
+						</div>
 					</div>
+
 				</div>
 			</div>
 
@@ -1455,16 +1488,19 @@
 								</div>
 						</div>
 					</div>
-					<div class="first-hidden__pic first-hidden__pic--simple">
-						<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/Hra4aR4G6A4?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=Hra4aR4G6A4"
-								src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-						<button type="button" class="arrow-btn js-hide-hidden" data-id="third-hidden">
-							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
-							</svg>
-							<span class="arrow-btn__text">SHOW LESS</span>
-						</button>
+					<div class="first-hidden__pic-wrap">
+						<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
+							<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/Hra4aR4G6A4?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=Hra4aR4G6A4"
+									src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+							<button type="button" class="arrow-btn js-hide-hidden" data-id="third-hidden">
+								<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0.146446 3.32833C-0.0488148 3.5236 -0.0488148 3.84018 0.146446 4.03544L3.32843 7.21742C3.52369 7.41268 3.84027 7.41268 4.03553 7.21742C4.2308 7.02216 4.2308 6.70558 4.03553 6.51031L1.20711 3.68189L4.03553 0.853459C4.23079 0.658197 4.23079 0.341614 4.03553 0.146352C3.84027 -0.0489097 3.52369 -0.0489097 3.32843 0.146353L0.146446 3.32833ZM25 3.68188L25 3.18188L0.5 3.18189L0.5 3.68189L0.5 4.18189L25 4.18188L25 3.68188Z" fill="#F77B5F"/>
+								</svg>
+								<span class="arrow-btn__text">SHOW LESS</span>
+							</button>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -1549,55 +1585,53 @@
 
 	  const video = block.querySelector('.js-yt-video');
 	  if (video && video.dataset.src) {
-		  const onTransitionEnd = (e) => {
-			  if (e.target !== block) return;
-			  block.removeEventListener('transitionend', onTransitionEnd);
-			  video.src = video.dataset.src;
-		  };
-		  block.addEventListener('transitionend', onTransitionEnd);
+	    if (video && video.dataset.src) {
+		    setTimeout(() => {
+			    video.src = video.dataset.src;
+		    }, 400);
+	    }
 	  }
 
-		if (id === 'first-hidden' || id === 'second-hidden') {
-			const img = block.querySelector('.js-move-imag');
-			const cards = block.querySelectorAll('.js-list-block .mini-card');
-			const blockLeft = block.querySelector('.js-opacity-inner')
+	  const img = block.querySelector('.js-move-imag');
+	  const cards = block.querySelectorAll('.js-list-block .mini-card');
+	  const blockLeft = block.querySelector('.js-opacity-inner')
 
-		if(blockLeft) {
-		blockLeft.style.transition = 'none';
-		blockLeft.style.opacity = '0';
+	  if(blockLeft) {
+		  blockLeft.style.transition = 'none';
+		  blockLeft.style.opacity = '0';
 
-		setTimeout(() => {
-			blockLeft.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-			blockLeft.style.opacity = '1';
-		}, 10);
-		}
+		  setTimeout(() => {
+			  blockLeft.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+			  blockLeft.style.opacity = '1';
+		  }, 10);
+	  }
 
-		if (img) {
-			img.style.transition = 'none';
-			img.style.transform = 'translateX(calc(-100% - 40px))';
-			img.style.opacity = '0';
+	  if (img) {
+		  img.style.transition = 'none';
+		  img.style.transform = 'translateX(calc(-100% - 40px))';
+		  img.style.opacity = '0';
 
-			// Форсируем reflow чтобы браузер точно применил начальные стили
-			img.getBoundingClientRect();
+		  // Форсируем reflow чтобы браузер точно применил начальные стили
+		  img.getBoundingClientRect();
 
-			img.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease';
-			img.style.transform = 'translateX(0)';
-			img.style.opacity = '1';
-		}
+		  img.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease';
+		  img.style.transform = 'translateX(0)';
+		  img.style.opacity = '1';
+	  }
 
-			cards.forEach((card, i) => {
-				card.style.transition = 'none';
-				card.style.opacity = '0';
-				card.style.transform = 'translateY(12px)';
+	  if(cards.length) {
+		  cards.forEach((card, i) => {
+			  card.style.transition = 'none';
+			  card.style.opacity = '0';
+			  card.style.transform = 'translateY(12px)';
 
-				setTimeout(() => {
-					card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-					card.style.opacity = '1';
-					card.style.transform = 'translateY(0)';
-				}, 120 + i * 80);
-			});
-		}
-
+			  setTimeout(() => {
+				  card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+				  card.style.opacity = '1';
+				  card.style.transform = 'translateY(0)';
+			  }, 120 + i * 80);
+		  });
+	  }
 		requestAnimationFrame(() => {
 			requestAnimationFrame(() => {
 				adjustParentHeight(block);
