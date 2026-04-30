@@ -242,10 +242,6 @@
           padding: 11px 53px 7px 27px;
           opacity: 0;
 		      pointer-events: none;
-		      position: absolute;
-		      top: 0;
-		      left: 0;
-		      z-index: 1;
           background-color: #fff;
 		      transition: opacity 0.15s ease-in;
       }
@@ -613,7 +609,7 @@
       }
 
       .big-title__sub {
-          font: 400 30px/1 'Novelist';
+          font: 400 30px/1.2 'Novelist';
           color: #000000;
           text-transform: uppercase;
           letter-spacing: 0.005em;
@@ -655,6 +651,30 @@
       }
 
       @media(max-width: 1199px) {
+
+		      .first-hidden {
+				      position: relative;
+              display: none;
+		      }
+
+          .first-hidden.show {
+              display: flex;
+          }
+
+          .first-hidden__pic {
+		          transform: none !important;
+              margin: 0;
+		          max-width: 100%;
+		          min-height: initial;
+          }
+
+          .first-hidden__pic::after {
+              display: none;
+          }
+
+          .accordion-custom--th .accordion-custom__hidden-inner {
+              padding: 16px;
+          }
 
           .big-title__title {
               font-size: 44px;
@@ -738,10 +758,6 @@
 		          transform: none;
           }
 
-          .first-hidden__pic {
-              display: none;
-          }
-
           .mini-card {
 		          flex-direction: column;
 		          align-items: flex-start;
@@ -752,6 +768,10 @@
           .mini-card:last-child {
               padding-bottom: 0;
 		          border: none;
+          }
+
+          .first-hidden {
+		          flex-direction: column-reverse;
           }
 
           .first-hidden__text {
