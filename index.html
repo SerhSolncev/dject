@@ -829,6 +829,23 @@
 
       @media (min-width: 1200px) and (max-width: 1920px) {
 
+          .first-hidden__pic {
+              width: 20.4167vw;   /* 392/1920*100 */
+              max-width: 20.4167vw;
+              min-height: unset;
+          }
+
+          /* mini-card__pic — было aspect-ratio: 270/82 без размеров */
+          .mini-card__pic {
+              width: 14.0625vw
+          }
+
+          /* accordion-custom__pic img — было max-width: 623px */
+          .accordion-custom__pic img {
+              max-width: 32.4479vw;
+          }
+
+
           /* projects-wrap */
           .projects-wrap {
               width: calc(100% - 1.6667vw);
