@@ -1562,7 +1562,9 @@
 			  pic.style.opacity = '1';
 			  pic.style.pointerEvents = 'all';
 		  }
-		  if (video && video.dataset.src) video.src = video.dataset.src;
+	    if (video && video.dataset.src) {
+		    video.src = video.dataset.src.replace('mute=1', 'mute=0');
+	    }
 	  });
 
 	  project.addEventListener('mouseleave', () => {
