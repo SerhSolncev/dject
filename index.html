@@ -11,7 +11,7 @@
 	<style>
 
 			:root {
-          --t-text-font: 'Novelist', Arial, sans-serif;
+          --t-headline-font: 'Novelist', Arial, sans-serif;
           --t-text-font: 'Inter', Arial, sans-serif;
 			}
 
@@ -25,7 +25,7 @@
       }
 
       body {
-		      font-family: var(--t-text-font);
+		      font-family: var(--t-headline-font,Arial);
       }
 
       * {
@@ -87,9 +87,11 @@
 		      pointer-events: none;
 		      transition: opacity 0.15s ease-in;
 		      cursor: pointer;
+          background-color: #f77b5f;
+		      border-radius: 16px;
       }
 
-      .project-f__pic img {
+      .project-f__pic img, .project-f__pic iframe {
 		      width: 100%;
 		      height: 100%;
 		      object-fit: cover;
@@ -110,14 +112,14 @@
       }
 
       .project-f__title {
-		      font: 300 42px/1.15 var(--t-text-font);
+		      font: 300 42px/1.15 var(--t-headline-font,Arial);
           color: #000000;
           text-transform: uppercase;
           margin: 0 0 103px;
       }
 
       .project-f__number {
-          font: 400 380px/1 var(--t-text-font);
+          font: 400 380px/1 var(--t-headline-font,Arial);
           color: #000000;
           margin: 0 0 -24px;
       }
@@ -136,11 +138,6 @@
 
       .project-f--th .arrow-btn {
           transform: translateX(-4px);
-      }
-
-      .project-f:hover .project-f__pic {
-          opacity: 1;
-          pointer-events: all;
       }
 
       .project-f:hover .project-f__bottom {
@@ -211,7 +208,7 @@
           display: flex;
           align-items: center;
 		      gap: 5px;
-          font: 500 15px/1.2 var(--t-text-font);
+          font: 500 15px/1.2 var(--t-text-font,Arial);
           color: #000000;
           padding: 3px 9px;
           text-transform: uppercase;
@@ -260,14 +257,14 @@
       }
 
       .first-hidden__title {
-          font: 300 60px/1 var(--t-text-font);
+          font: 300 60px/1 var(--t-headline-font,Arial);
           color: #000000;
           text-transform: uppercase;
           margin: 0 0 18px;
       }
 
       .first-hidden__sub {
-          font: 400 30px/1.2 var(--t-text-font);
+          font: 400 30px/1.2 var(--t-headline-font,Arial);
           color: #000000;
           text-transform: uppercase;
           letter-spacing: 0.005em;
@@ -282,7 +279,7 @@
       }
 
       .first-hidden__text {
-          font: 500 15.5px/1.3 var(--t-text-font);
+          font: 500 15.5px/1.3 var(--t-text-font,Arial);
           color: #000000;
           padding: 5px 0 0 78px;
       }
@@ -366,11 +363,6 @@
           z-index: 2;
       }
 
-      .first-hidden__pic iframe {
-          transform: translateY(-60px);
-          height: calc(100% + 120px);
-      }
-
       .first-hidden__left {
           width: 100%;
           display: flex;
@@ -410,7 +402,7 @@
       }
 
       .mini-card__title {
-          font: 500 26px/1 var(--t-text-font);
+          font: 500 26px/1 var(--t-headline-font,Arial);
           color: #dc4c2b;
           text-transform: uppercase;
 		      text-shadow: 0 0 0 #dc4c2b, 0 0 0 #dc4c2b;
@@ -418,7 +410,7 @@
       }
 
       .mini-card__text {
-          font: 500 15.5px/1.3 var(--t-text-font);
+          font: 500 15.5px/1.3 var(--t-text-font,Arial);
           color: #000000;
       }
 
@@ -571,7 +563,7 @@
       }
 
       .acc-btn__text {
-          font: 500 44px/1 var(--t-text-font);
+          font: 500 44px/1 var(--t-headline-font,Arial);
           color: #000;
 		      text-transform: uppercase;
 		      transition: color 0.15s ease-in;
@@ -602,7 +594,7 @@
       }
 
       .text-block__item {
-		      font: 400 34px/1.15 var(--t-text-font);
+		      font: 400 34px/1.15 var(--t-headline-font,Arial);
       }
 
       .text-block__item--sec span {
@@ -620,7 +612,7 @@
       }
 
       .big-title__title {
-          font: 400 91px/1.15 var(--t-text-font);
+          font: 400 91px/1.15 var(--t-headline-font,Arial);
       }
 
       .big-title__bottom {
@@ -637,14 +629,14 @@
       }
 
       .big-title__sub {
-          font: 400 30px/1.2 var(--t-text-font);
+          font: 400 30px/1.2 var(--t-headline-font,Arial);
           color: #000000;
           text-transform: uppercase;
           letter-spacing: 0.005em;
       }
 
       .big-title__text {
-          font: 500 15.5px/1.3 var(--t-text-font);
+          font: 500 15.5px/1.3 var(--t-text-font,Arial);
           color: #000000;
 		      max-width: 280px;
       }
@@ -1155,7 +1147,8 @@
 							</button>
 						</div>
 						<div class="project-f__pic js-show-hidden" data-id="first-hidden">
-							<img src="https://static.tildacdn.com/tild6561-3866-4430-b164-663536353132/card1.webp" alt="" width="417" height="658">
+							<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/McYbd0KcJYk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=McYbd0KcJYk"
+									src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 						</div>
 					</div>
 					<div class="first-hidden js-hidden-block" data-id="first-hidden">
@@ -1226,7 +1219,8 @@
 							</div>
 						<div class="first-hidden__pic-wrap">
 							<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
-								<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/nCDm7d5vJMA?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=nCDm7d5vJMA"
+								<img src="https://static.tildacdn.com/tild6561-3866-4430-b164-663536353132/card1.webp" alt="" width="417" height="658">
+								<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/McYbd0KcJYk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=McYbd0KcJYk"
 										src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 								<button type="button" class="arrow-btn js-hide-hidden" data-id="first-hidden">
 									<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1406,7 +1400,7 @@
 					</div>
 					<div class="first-hidden__pic-wrap">
 						<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
-							<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/McYbd0KcJYk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=McYbd0KcJYk"
+							<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/Hra4aR4G6A4?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=Hra4aR4G6A4"
 									src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 							<button type="button" class="arrow-btn js-hide-hidden" data-id="second-hidden">
 								<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1490,7 +1484,7 @@
 					</div>
 					<div class="first-hidden__pic-wrap">
 						<div class="first-hidden__pic first-hidden__pic--simple js-move-imag">
-							<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/Hra4aR4G6A4?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=Hra4aR4G6A4"
+							<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/nCDm7d5vJMA?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=nCDm7d5vJMA"
 									src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 							<button type="button" class="arrow-btn js-hide-hidden" data-id="third-hidden">
 								<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1558,7 +1552,30 @@
 		});
 	});
 
-	function adjustParentHeight(block) {
+  document.querySelectorAll('.project-f').forEach(project => {
+	  const pic = project.querySelector('.project-f__pic');
+	  const video = project.querySelector('.js-yt-video');
+
+	  project.addEventListener('mouseenter', () => {
+		  if (window.innerWidth <= 1200) return;
+		  if (pic) {
+			  pic.style.opacity = '1';
+			  pic.style.pointerEvents = 'all';
+		  }
+		  if (video && video.dataset.src) video.src = video.dataset.src;
+	  });
+
+	  project.addEventListener('mouseleave', () => {
+		  if (window.innerWidth <= 1200) return;
+		  if (pic) {
+			  pic.style.opacity = '';
+			  pic.style.pointerEvents = '';
+		  }
+		  if (video) video.src = '';
+	  });
+  });
+
+  function adjustParentHeight(block) {
 		const parent = document.querySelector('.js-projects-wrap');
 		if (!parent) return;
 
@@ -1580,23 +1597,33 @@
 		parent.style.minHeight = '';
 	}
 
-	function openBlock(block, id) {
-		block.classList.add('show');
+  function openBlock(block, id) {
+	  block.classList.add('show');
 
+	  const parentProject = block.closest('.project-f');
+	  if (parentProject) {
+		  const pic = parentProject.querySelector('.project-f__pic');
+		  const hoverVideo = parentProject.querySelector('.js-yt-video');
+		  if (pic) {
+			  pic.style.opacity = '';
+			  pic.style.pointerEvents = '';
+		  }
+		  if (hoverVideo) hoverVideo.src = '';
+	  }
+
+	  // Видео только на мобильных
 	  const video = block.querySelector('.js-yt-video');
-	  if (video && video.dataset.src) {
-	    if (video && video.dataset.src) {
-		    setTimeout(() => {
-			    video.src = video.dataset.src;
-		    }, 400);
-	    }
+	  if (video && video.dataset.src && window.innerWidth <= 1200) {
+		  setTimeout(() => {
+			  video.src = video.dataset.src;
+		  }, 400);
 	  }
 
 	  const img = block.querySelector('.js-move-imag');
 	  const cards = block.querySelectorAll('.js-list-block .mini-card');
-	  const blockLeft = block.querySelector('.js-opacity-inner')
+	  const blockLeft = block.querySelector('.js-opacity-inner');
 
-	  if(blockLeft) {
+	  if (blockLeft) {
 		  blockLeft.style.transition = 'none';
 		  blockLeft.style.opacity = '0';
 
@@ -1611,7 +1638,6 @@
 		  img.style.transform = 'translateX(calc(-100% - 40px))';
 		  img.style.opacity = '0';
 
-		  // Форсируем reflow чтобы браузер точно применил начальные стили
 		  img.getBoundingClientRect();
 
 		  img.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease';
@@ -1619,7 +1645,7 @@
 		  img.style.opacity = '1';
 	  }
 
-	  if(cards.length) {
+	  if (cards.length) {
 		  cards.forEach((card, i) => {
 			  card.style.transition = 'none';
 			  card.style.opacity = '0';
@@ -1632,12 +1658,13 @@
 			  }, 120 + i * 80);
 		  });
 	  }
-		requestAnimationFrame(() => {
-			requestAnimationFrame(() => {
-				adjustParentHeight(block);
-			});
-		});
-	}
+
+	  requestAnimationFrame(() => {
+		  requestAnimationFrame(() => {
+			  adjustParentHeight(block);
+		  });
+	  });
+  }
 
 	function closeBlock(block) {
 		const video = block.querySelector('.js-yt-video');
