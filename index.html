@@ -1624,9 +1624,11 @@
 	  // Видео только на мобильных
 	  const video = block.querySelector('.js-yt-video');
 	  if (video && video.dataset.src && window.innerWidth <= 1200) {
-		  setTimeout(() => {
-			  video.src = video.dataset.src;
-		  }, 400);
+	    setTimeout(() => {
+		    video.src = video.dataset.src;
+
+		    video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	    }, 400);
 	  }
 
 	  const img = block.querySelector('.js-move-imag');
