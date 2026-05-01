@@ -53,7 +53,7 @@
 
       .projects-wrap__list {
           display: grid;
-          grid-template-columns: 32.25fr 35.19fr 32.56fr;
+          grid-template-columns: repeat(3, 1fr);
           padding: 32px 5.5% 26px 0;
 		      position: relative;
       }
@@ -89,6 +89,7 @@
 		      cursor: pointer;
           background-color: #f77b5f;
 		      border-radius: 16px;
+		      overflow: hidden;
       }
 
       .project-f__pic img, .project-f__pic iframe {
@@ -96,6 +97,11 @@
 		      height: 100%;
 		      object-fit: cover;
 		      border-radius: 16px;
+      }
+
+      .project-f__pic iframe {
+		      transform: translateY(-60px);
+          height: calc(100% + 120px);
       }
 
       .project-f__bottom {
@@ -361,6 +367,11 @@
           border-radius: 16px;
 		      position: relative;
           z-index: 2;
+      }
+
+      .first-hidden__pic iframe {
+          transform: translateY(-60px);
+          height: calc(100% + 120px);
       }
 
       .first-hidden__left {
@@ -1570,9 +1581,20 @@
 			  pic.style.opacity = '1';
 			  pic.style.pointerEvents = 'all';
 		  }
-	    if (video && video.dataset.src) {
-		    video.src = video.dataset.src.replace('mute=1', 'mute=0');
-	    }
+		  if (video && video.dataset.src) {
+			  video.src = video.dataset.src;
+
+			  const onLoad = () => {
+				  video.removeEventListener('load', onLoad);
+				  setTimeout(() => {
+					  video.contentWindow.postMessage(
+						  JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
+						  '*'
+					  );
+				  }, 500);
+			  };
+			  video.addEventListener('load', onLoad);
+		  }
 	  });
 
 	  project.addEventListener('mouseleave', () => {
