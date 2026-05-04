@@ -1619,6 +1619,9 @@
 
 	  project.addEventListener('mouseleave', () => {
 		  if (window.innerWidth <= 1200) return;
+	    document.querySelectorAll('.project-f').forEach(project => {
+		    project.classList.remove('hovered-item')
+	    })
 		  if (pic) {
 			  pic.style.opacity = '';
 			  pic.style.pointerEvents = '';
@@ -1725,6 +1728,9 @@
   }
 
 	function closeBlock(block) {
+	  document.querySelectorAll('.project-f').forEach(project => {
+		  project.classList.remove('hovered-item')
+	  })
 		const video = block.querySelector('.js-yt-video');
 		if (video) {
 			video.src = '';
