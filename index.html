@@ -72,16 +72,18 @@
 		      flex-direction: column;
 		      align-items: flex-start;
 		      align-self: stretch;
-          padding: 0 8px 33px 28px;
+          padding: 0 28px 33px 28px;
 		      position: relative;
       }
 
       .project-f__pic {
 		      position: absolute;
 		      top: 0;
-		      left: 0;
+		      left: 50%;
+		      transform: translateX(-50%);
 		      z-index: 1;
-			    width: 100%;
+		      max-width: 356px;
+		      aspect-ratio: 9/16;
 			    height: 100%;
           opacity: 0;
 		      pointer-events: none;
@@ -95,55 +97,58 @@
       .project-f__pic img, .project-f__pic iframe {
 		      width: 100%;
 		      height: 100%;
-		      object-fit: cover;
 		      border-radius: 16px;
       }
 
-      .project-f__pic iframe {
-		      transform: translateY(-60px);
-          height: calc(100% + 120px);
-      }
+      /*.project-f__pic iframe {*/
+		  /*    transform: translateY(-60px);*/
+      /*    height: calc(100% + 120px);*/
+      /*}*/
 
       .project-f__bottom {
+          width: 100%;
           margin: auto 0 0 auto;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-end;
 		      position: relative;
 		      z-index: 2;
       }
 
       .project-f .arrow-btn {
           transform: translateX(-20px);
+		      transition: transform 0.15s ease-in;
       }
 
       .project-f__title {
 		      font: 300 42px/1.15 var(--t-headline-font,Arial);
           color: #000000;
           text-transform: uppercase;
-          margin: 0 0 103px;
+          margin: 0 0 75px;
+		      transition: opacity 0.15s ease-in;
       }
 
       .project-f__number {
           font: 400 380px/1 var(--t-headline-font,Arial);
           color: #000000;
           margin: 0 0 -24px;
+          transition: opacity 0.15s ease-in;
       }
 
-      .project-f--sec {
-          padding: 0 36px 33px 28px;
+      .project-f .project-f__pic .arrow-btn {
+          position: absolute;
+          bottom: 84px;
+          left: 50%;
+          z-index: 1;
+          transform: translateX(-50%);
       }
 
-      .project-f--sec .arrow-btn {
-          transform: translateX(-19px);
+      .project-f.hovered-item .project-f__bottom {
+          opacity: 0;
       }
 
-      .project-f--th {
-          padding: 0 2px 33px 36px;
-      }
-
-      .project-f--th .arrow-btn {
-          transform: translateX(-4px);
+      .project-f.hovered-item .project-f__title, .project-f.hovered-item .project-f__number {
+          opacity: 0;
       }
 
       .project-f:hover .project-f__bottom {
@@ -369,10 +374,10 @@
           z-index: 2;
       }
 
-      .first-hidden__pic iframe {
-          transform: translateY(-60px);
-          height: calc(100% + 120px);
-      }
+      /*.first-hidden__pic iframe {*/
+      /*    transform: translateY(-60px);*/
+      /*    height: calc(100% + 120px);*/
+      /*}*/
 
       .first-hidden__left {
           width: 100%;
@@ -866,6 +871,14 @@
 
       @media(min-width: 1200px) {
 
+		      /*.project-item {*/
+				  /*    min-height: 607px;*/
+		      /*}*/
+
+		      /*.has-opened .project-item {*/
+          /*    min-height: initial;*/
+          /*}*/
+
           .project-f:hover .project-f__number {
               opacity: 0;
           }
@@ -923,30 +936,15 @@
 
           /* project-f */
           .project-f {
-              padding: 0 0.4167vw 1.7188vw 1.4583vw;
+              padding: 0 1.4167vw 1.7188vw 1.4583vw;
           }
           .project-f__title {
               font-size: 2.1875vw;
-              margin: 0 0 5.3646vw;
+              margin: 0 0 4vw;
           }
           .project-f__number {
               font-size: 19.7917vw;
               margin: 0 0 -1.25vw;
-          }
-          .project-f--sec {
-              padding: 0 1.875vw 1.7188vw 1.4583vw;
-          }
-          .project-f--sec .arrow-btn {
-              transform: translateX(-0.9896vw);
-          }
-          .project-f--th {
-              padding: 0 0.1042vw 1.7188vw 1.875vw;
-          }
-          .project-f--th .arrow-btn {
-              transform: translateX(-0.2083vw);
-          }
-          .project-f .arrow-btn {
-              transform: translateX(-1.0417vw);
           }
 
           /* projects-wrap__duga */
@@ -1051,7 +1049,7 @@
               margin: 0 0 -0.6771vw;
           }
           .accordion-custom__pic {
-              margin: -0.9896vw 0 -1.25vw;
+              margin: -1.9896vw 0 -2.8vw;
           }
           .accordion-custom__hidden-inner {
               border-radius: 0.7813vw;
@@ -1162,6 +1160,12 @@
 							</button>
 						</div>
 						<div class="project-f__pic js-show-hidden" data-id="first-hidden">
+							<button type="button" class="arrow-btn js-show-hidden" data-id="first-hidden" data-start-text="SHOW MORE" data-hide-text="SHOW LESS">
+								<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
+								</svg>
+								<span class="arrow-btn__text">SHOW MORE</span>
+							</button>
 							<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/McYbd0KcJYk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=McYbd0KcJYk"
 									src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 						</div>
@@ -1265,6 +1269,12 @@
 						</button>
 					</div>
 					<div class="project-f__pic js-show-hidden" data-id="second-hidden">
+						<button type="button" class="arrow-btn js-show-hidden" data-id="second-hidden" data-start-text="SHOW MORE" data-hide-text="SHOW LESS">
+							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
+							</svg>
+							<span class="arrow-btn__text">SHOW MORE</span>
+						</button>
 						<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/Hra4aR4G6A4?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=Hra4aR4G6A4"
 								src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 					</div>
@@ -1448,6 +1458,12 @@
 						</button>
 					</div>
 					<div class="project-f__pic js-show-hidden" data-id="third-hidden">
+						<button type="button" class="arrow-btn js-show-hidden" data-id="third-hidden" data-start-text="SHOW MORE" data-hide-text="SHOW LESS">
+							<svg width="25" height="8" viewBox="0 0 25 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.9648 0.146446C21.1601 -0.0488155 21.4766 -0.0488154 21.6719 0.146446L24.8535 3.32809C25.0488 3.52335 25.0488 3.83986 24.8535 4.03512L21.6719 7.21676C21.4766 7.41202 21.1601 7.41202 20.9648 7.21676C20.7696 7.0215 20.7696 6.70499 20.9648 6.50973L23.293 4.1816L0 4.1816L0 3.1816L23.293 3.1816L20.9648 0.853478C20.7696 0.658216 20.7696 0.341709 20.9648 0.146446Z" fill="#F77B5F"/>
+							</svg>
+							<span class="arrow-btn__text">SHOW MORE</span>
+						</button>
 						<iframe class="js-yt-video" data-src="https://www.youtube.com/embed/nCDm7d5vJMA?enablejsapi=1&autoplay=1&mute=0&controls=0&loop=1&playlist=nCDm7d5vJMA"
 								src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 					</div>
@@ -1578,6 +1594,10 @@
 	  project.addEventListener('mouseenter', () => {
 		  if (window.innerWidth <= 1200) return;
 		  if (pic) {
+		  document.querySelectorAll('.project-f').forEach(project => {
+		    project.classList.remove('hovered-item')
+		  })
+		    project.classList.add('hovered-item')
 			  pic.style.opacity = '1';
 			  pic.style.pointerEvents = 'all';
 		  }
@@ -1631,6 +1651,10 @@
 
   function openBlock(block, id) {
 	  block.classList.add('show');
+
+	  document.querySelectorAll('.project-f').forEach(project => {
+		  project.classList.remove('hovered-item')
+	  })
 
 	  const parentProject = block.closest('.project-f');
 	  if (parentProject) {
