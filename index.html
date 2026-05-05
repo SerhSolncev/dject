@@ -1676,6 +1676,17 @@
 	    setTimeout(() => {
 		    video.src = video.dataset.src;
 
+	      const onLoad = () => {
+		      video.removeEventListener('load', onLoad);
+		      setTimeout(() => {
+			      video.contentWindow.postMessage(
+				      JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
+				      '*'
+			      );
+		      }, 500);
+	      };
+	      video.addEventListener('load', onLoad);
+
 		    video.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	    }, 400);
 	  }
